@@ -6,10 +6,10 @@
 head:
     favicon: "/img/avatar.png"
     keywords: miccall
-    backgroundpic : "img/bg.jpg"
+    backgroundpic : "img/sunset.jpg"
 
 Intro:
-    name: W Z R
+    name: zrwu
     slogan: "Whatever is worth doing is worth doing well <br/> I'll think of you every step of the way"
     HeadButton:
 
