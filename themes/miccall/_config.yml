@@ -5,13 +5,13 @@
 # Head info
 head:
     favicon: "/img/avatar.png"
-    keywords: miccall
+    # keywords: miccall
     backgroundpic : "img/sunset.jpg"
 
 Intro:
     name: zrwu
     slogan: "Whatever is worth doing is worth doing well <br/> I'll think of you every step of the way"
-    HeadButton:
+    # HeadButton:
 
 Nav:
     Home_name: 主页
@@ -24,11 +24,11 @@ Nav:
     # for more icons, please see http://fontawesome.io/icons/#brand
     icon:
         github: https://github.com/wzr1005
-        500px: http://500px.com
+        # 500px: http://500px.com
         
     pages:
         简历: 
-            link: "/about/"
+            link: "/about/index.md"
         团队 :
             link: "/group/"
         图库 :
@@ -43,7 +43,6 @@ MainFirst:
     description: USTC
     pic_url: /images/me.jpg
     goto_ulr: ""
-
 Gallery :
     title: Mr.metro 
     description: Just another fine responsive 
@@ -105,7 +104,11 @@ busuanzi:
     post_pv: true
     busuanzi_pure_mini_js: "https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
 
-
+menu:
+  home: /
+  categories: /categories
+  archives: /archives
+  tags: /tags
 # Mathjax 支持库 
 mathjax:
   enable: true

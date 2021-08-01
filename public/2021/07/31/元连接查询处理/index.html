@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="/css/mic_main.css" />
     <link rel="stylesheet" href="/css/dropdownMenu.css" />
-    <meta name="keywords" content="miccall" />
+    <meta name="keywords" content="" />
     
     	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	 
@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        
+	                        <a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a>
 	                    </ul>
 	        </li>
 	        
@@ -106,7 +106,7 @@
 		        <!-- Pages 自定义   -->
 		        
 		        <li>
-		            <a href="/about/" title="简历">
+		            <a href="/about/index.md" title="简历">
 		                简历
 		            </a>
 		        </li>
@@ -141,12 +141,6 @@
                         </a>
                     </li>
                     
-                    <li>
-                        <a title="500px" href="http://500px.com" target="_blank" rel="noopener">
-                            <i class="icon fa fa-500px"></i>
-                        </a>
-                    </li>
-                    
 			</ul>
 </nav>
 
@@ -158,8 +152,8 @@
             <div class="typo" style="padding: 3rem;">
                 <h1 id="SPRINTER：快速-n-元连接查询处理"><a href="#SPRINTER：快速-n-元连接查询处理" class="headerlink" title="SPRINTER：快速 n 元连接查询处理"></a>SPRINTER：快速 n 元连接查询处理</h1><p>复杂 OLAP 查询的方法</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​    OLAP查询处理的概念现在被广泛使用被各种应用所采用。复数包含非唯一键（称为FK-FK 连接）在这些应用程序中增加。然而现有的内存 OLAP 系统往往不处理这种高效的复杂查询，因为它们会产生大量的中间结果或招致大量的探测成本。<br>​    在本文中，我们提出了一种有效的查询规划方法用于复杂的 OLAP 查询。它基于成本模型生成包含 n 元连接运算符的查询计划。该计划确实不生成处理 FK-FK 连接的中间结果并显着降低探头成本。我们还提出了一个n元连接运算符的有效处理方法。我们通过集成我们的系统来实现原型系统 SPRINTER将建议的方法转化为开源的内存中 OLAP系统。通过使用 TPC-DS 基准的实验，我们已经证明，对于复杂查询，SPRINTER 的性能优于最先进的 OLAP 系统。</p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>n连接运算符，查询规划，查询优化，FKFK连接，复杂OLAP查询处理，协同处理</p>
-<h2 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a><strong>INTRODUCTION</strong></h2><p>有许多用于大规模数据分析的内存中 OLAP 查询处理系统，例如 Quick step [34]、MemSQL [11]、MonetDB [9]、Hyrise [16]、Ora cle [23] 、DB2 [6]、SQL Server [24]、SAP HANA [41]、Peloton [28]、OmniSci [33]、CoGaDB [10]、Kinetica [21] 和豹猫 [17]。 这些系统主要专注于有效处理传统的星形/雪花连接查询，这些查询包含一个主键之间的一些连接操作表和另一个表的外键 [45, 50]。 中的一个<br>这些系统中查询优化的目标是减少由连接引起的处理中间结果的成本查询计划中的操作 [40, 45]。 为实现目标，现有系统利用了各种技术，例如中间结果的流水线[28, 50]。</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>​    n连接运算符，查询规划，查询优化，FKFK连接，复杂OLAP查询处理，协同处理</p>
+<h2 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a><strong>INTRODUCTION</strong></h2><p>​    有许多用于大规模数据分析的内存中 OLAP 查询处理系统，例如 Quick step [34]、MemSQL [11]、MonetDB [9]、Hyrise [16]、Ora cle [23] 、DB2 [6]、SQL Server [24]、SAP HANA [41]、Peloton [28]、OmniSci [33]、CoGaDB [10]、Kinetica [21] 和豹猫 [17]。 这些系统主要专注于有效处理传统的星形/雪花连接查询，这些查询包含一个主键之间的一些连接操作表和另一个表的外键 [45, 50]。 中的一个<br>这些系统中查询优化的目标是减少由连接引起的处理中间结果的成本查询计划中的操作 [40, 45]。 为实现目标，现有系统利用了各种技术，例如中间结果的流水线[28, 50]。</p>
 <p>​    OLAP查询处理的概念现在正被广泛应用于各种应用中，包括图形分析[1,13]、人工智能[22][20,26]和生物信息学[20,26]。作为应用程序 如果会变得越来越复杂，这些应用程序中的查询工作负载往往会变得越来越复杂。特别是，包含一对外部操作之间的连接操作的查询的数量 唯一的)键，而不是传统的一对主键和外键在应用程序中增加。本文将这种连接操作表示为FK-FK连接。一个FK-FK连接通常会产生一个lar 由于重复的连接键值而导致的连接结果数。如果查询包含两个事实表之间的FK-FK连接操作(s)，则由于hu，高效处理查询将变得更加困难 中间结果的通用量。这种复杂的查询通常发生在具有包含多个星形或雪花模式[3]的暴风雪模式的数据库上。例如，TPC-DS 基准测试使用一个暴风雪模式，在TPC-DS基准测试中总共99个查询中的26个（即26.2%的查询）包含一个或多个FK-FK连接操作[30]。</p>
 <p>​    现有的OLAP系统往往不能有效地处理包含FK-FK连接操作的复杂查询。它们通常会生成一个左深的连接树，并在一个实时操作员中处理该计划 方式，哪里可以</p>
 <p>​    由于查询中FK-FK连接（或非键连接）操作符的下一个操作符无法处理的中间结果太大，因此会显著降级，或处理本身可能会失败 计划[47]。流水线技术通过在一组由其余关系构建的哈希表中查找探测关系的每个元组来计算连接树中的一系列多个连接运算符 [27,50]。它可能对PK-FK连接的查询有效，但对于事实表中包含FK-FK连接的复杂查询可能无效，因为存在以下两个问题：许多关键比较 以及大量的内存使用量。首先，探测关系中每个元组的连接键值需要与哈希表中的所有重复键值相匹配。可能会有很多比赛到期 对于FK-FK连接操作，这可以根据连接键值的重复程度成比例地大大降低查询性能。其次，保留一组由非专业人员构建的所有哈列表 主存中的关系需要大量内存，特别是当表数量增加时。由于上述两个问题，性能可能会显著下降，或者 当我们对包含FK-FK连接的查询使用管道技术时，处理本身可能会失败。</p>

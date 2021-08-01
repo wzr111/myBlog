@@ -1,6 +1,8 @@
 ---
 title: 谢希科老师数据库前沿课的论文pre
 date: 2021-07-31 18:40:08
+categories:
+ - ustc
 tags:
 thumbnail: https://picjumbo.com/wp-content/uploads/website-programming-code-free-photo-2210x1473.jpg
 ---
