@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a>
+	                        <a class="category-link" href="/categories/Spring-Boot/">Spring Boot</a></li><li><a class="category-link" href="/categories/Spring-Boot/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a></li><li><a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/ustc/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a>
 	                    </ul>
 	        </li>
 	        
@@ -141,6 +141,12 @@
                         </a>
                     </li>
                     
+                    <li>
+                        <a title="zhihu" href="https://www.zhihu.com/people/wu-zhen-ren" target="_blank" rel="noopener">
+                            <i class="icon fa fa-zhihu"></i>
+                        </a>
+                    </li>
+                    
 			</ul>
 </nav>
 
@@ -161,7 +167,71 @@
 <p>离谱，wps新版的划词翻译的地方还不好找，<br><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0c3yhb81j32380h8n0g.jpg"></p>
 <p>如果不登陆的话，功能都是灰色的，微信扫描之后功能就亮了。</p>
 <p>短跑器：一种针对复杂OLAP查询的快速n元连接查询处理方法<br>复杂OLAP查询的快速n元连接查询处理方法</p>
-
+<h5 id="超键-super-key-在关系中能唯一标识元组的属性集称为关系模式的超键"><a href="#超键-super-key-在关系中能唯一标识元组的属性集称为关系模式的超键" class="headerlink" title="超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键"></a>超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键</h5><h5 id="候选键-candidate-key-不含有多余属性的超键称为候选键"><a href="#候选键-candidate-key-不含有多余属性的超键称为候选键" class="headerlink" title="候选键(candidate key):不含有多余属性的超键称为候选键"></a>候选键(candidate key):不含有多余属性的超键称为候选键</h5><h5 id="主键-primary-key-用户选作元组标识的一个候选键程序主键"><a href="#主键-primary-key-用户选作元组标识的一个候选键程序主键" class="headerlink" title="主键(primary key):用户选作元组标识的一个候选键程序主键"></a>主键(primary key):用户选作元组标识的一个候选键程序主键</h5><p><strong>外键 (FK)</strong> 是用于建立和加强两个表数据之间的链接的<strong>一列</strong>或<strong>多列</strong></p>
+<p>通过将保存表中主键值的一列或多列添加到另一个表中，可创建两个表之间的链接。这个列就成为第二个表的外键。</p>
+<p><strong>一张表外键的值一般来说是另一张表主键的值。因此，外键的存在使得表与表之间可以联系起来</strong></p>
+<p>FOREIGN KEY 约束防止这种情况的发生。如果主键表中数据的更改使之与外键表中数据的链接失效，则这种更改是不能实现的，从而确保了引用完整性。如果试图删除主键表中的行或更改主键值，而该主键值与另一个表的 FOREIGN KEY 约束值相关，则该操作不可实现。若要成功更改或删除FOREIGN KEY 约束的行，可以先在外键表中删除外键数据或更改外键数据，然后将外键链接到不同的主键数据上去。</p>
+<p><strong>OLAP</strong>联机分析处理是一种软件技术，它使分析人员能够迅速、一致、交互地从各个方面观察信息，以达到深入理解数据的目的。</p>
+<p>随着市场竞争的日趋激烈，企业更加强调决策的及时性和准确性，这使得以<strong>支持决策管理分析</strong>为主要目的的应用迅速崛起，这类应用被称为联机分析处理，它所存储的数据被称为信息数据。</p>
+<p>数据仓库：数据仓库系统的主要应用主要是OLAP（On-Line Analytical Processing），支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。</p>
+<p>基本每家电商公司都会经历，从只需要业务数据库到要数据仓库的阶段。</p>
+<ul>
+<li>电商早期启动非常容易，入行门槛低。找个外包团队，做了一个可以下单的网页前端 + 几台服务器 + 一个MySQL，就能开门迎客了。这好比手工作坊时期。</li>
+<li>第二阶段，流量来了，客户和订单都多起来了，普通查询已经有压力了，这个时候就需要升级架构变成<strong>多台服务器</strong>和多个业务数据库（<strong>量大+分库分表</strong>），这个阶段的业务数字和指标还可以勉强从业务数据库里查询。初步进入工业化。</li>
+<li>第三个阶段，一般需要 3-5 年左右的时间，随着业务指数级的增长，数据量的会陡增，公司角色也开始多了起来，开始有了 CEO、CMO、CIO，大家需要面临的问题越来越复杂，越来越深入。高管们关心的问题，从最初非常粗放的：“昨天的收入是多少”、“上个月的 PV、UV 是多少”，逐渐演化到<strong>非常精细化</strong>和<strong>具体的用户的集群分析</strong>，特定用户在某种使用场景中，例如“20~30岁女性用户在过去五年的第一季度化妆品类商品的购买行为与公司进行的促销活动方案之间的关系”。</li>
+</ul>
+<p>这类非常具体，且能够对公司决策起到关键性作用的问题，基本很难从业务数据库从调取出来。原因在于：</p>
+<ol>
+<li>业务数据库中的数据结构是<strong>为了完成交易而设计</strong>的，不是为了而查询和分析的便利设计的。</li>
+<li>业务数据库大多是<strong>读写优化的</strong>，即又要读（查看商品信息），也要写（产生订单，完成支付）。因此对于大量数据的读（查询指标，一般是复杂的只读类型查询）是支持不足的。</li>
+</ol>
+<p>而怎么解决这个问题，此时我们就需要建立一个数据仓库了，公司也算开始进入信息化阶段了。数据仓库的作用在于：</p>
+<ol>
+<li>数据结构为了分析和查询的便利；</li>
+<li>只读优化的数据库，即<strong>不需要它写入速度多么快，只要做大量数据的复杂查询的速度足够快就行了。</strong></li>
+</ol>
+<p>数据库 比较流行的有：MySQL, Oracle, SqlServer等</p>
+<p>数据仓库 比较流行的有：AWS Redshift, Greenplum, Hive等</p>
+<p><strong>本OLAP查询</strong>，基于成本模型 生成包含 <strong>n 元连接运算符</strong>的 查询计划。</p>
+<p><strong>+：a+b所以‘+’就是二元运算符。<br>++：a++所以++就是一元运算符。</strong></p>
+<p>n元就是n个元素，n个表做连接运算</p>
+<h3 id="本文结论：SPRINTER-的性能优于最先进的-OLAP-系统。"><a href="#本文结论：SPRINTER-的性能优于最先进的-OLAP-系统。" class="headerlink" title="本文结论：SPRINTER 的性能优于最先进的 OLAP 系统。"></a>本文结论：SPRINTER 的性能优于最先进的 OLAP 系统。</h3><p>keywords: n元连接运算符，查询规划，查询优化，FKFK连接，复杂OLAP查询处理，协同处理</p>
+<p>现有系统利用了各种技术，例如中间结果的流水线</p>
+<p>OLAP查询处理的概念现在正被广泛应用于各种应用中，包括图形分析[1,13]、人工智能[22][20,26]和生物信息学</p>
+<p>In particular, the number of queries which</p>
+<p>contain join operations between a pair of foreign (or non</p>
+<p>unique) keys rather than a conventional pair of primary and</p>
+<p>foreign keys increases in the applications. </p>
+<p>尤其是，查询的数量包括了外键之间的连接操作，而不是增加在应用程序的传统主键和外键</p>
+<p>本文将这种连接操作表示为FK-FK连接，一个FK-FK连接通常会产生一个lar 由于重复的连接键值而导致的连接结果数。</p>
+<p><strong>流水线技术通过在一组由其余关系构建的哈希表中查找探测关系的每个元组来计算连接树中的一系列多个连接运算符 [27,50]。</strong></p>
+<p>它可能对PK-FK连接的查询有效，但对于<strong>事实表中包含FK-FK连接的复杂查询</strong>可能无效</p>
+<p><strong>因为存在以下两个问题：</strong>许多key比较 以及大量的内存使用量。</p>
+<p>首先，探测关系中每个元组的连接键值需要与哈希表中的所有重复键值相匹配。可能会有很多比赛到期 对于FK-FK连接操作，这可以根据连接键值的重复程度成比例地大大降低查询性能。</p>
+<p>n元连接操作和二元连接操作相比，可以减少中间结果数量，大多数情况下更有效，</p>
+<p>多路连接处理已用于分布式查询处理[2,13,49]和图形模式查询处理[31,44]，但几乎没有在内存中的OLAP系统中使用 ，<strong>因为在内存内的处理环境中，哈希连接通常优于归并排序连接</strong>，并且不同于OLAY图形模式查询，OLAY查询是ad-hoc(点对点)和acyclic(无环)；</p>
+<p>我们提出了一种方法，可以生成n元连接的查询，而不是传统的二元操作，</p>
+<p>生成一个具有n-ary连接运算符(称为n-ary连接树)的查询计划是很简单的，相比较二元 搜索空间变得更大，</p>
+<p>我们<strong>提出了所使用的成本模型</strong>和一种<strong>查询优化方法 t</strong>允许查询规划方法只有在与传统的二进制左深连接树相比有益时才生成n-ary连接树</p>
+<p>单向连接啥基于最坏情况最优连接算法， the worst case optimal join algorithm，</p>
+<p>we have demonstrated that SPRINTER significantly outperforms the state-of-the-art OLAP query processing systems in terms of both processing speed and data size that can be <strong>processed without our of memory</strong>.</p>
+<p>我们已经证明了SPRINTER在处理速度和数据方面都显著优于最先进的OLAP查询处理系统 可以在内存不溢出的情况下处理</p>
+<p>本文贡献如下：</p>
+<ul>
+<li>我们提出了一种查询方法，可以生成复杂的OLAY查询的n元连接树包含FK-FK</li>
+<li>我们提出了成本模型和查询优化n路连接树的方法</li>
+<li>n元n路处理方法：基于最坏情况最优连接算法</li>
+<li>我们在所有相关层和基于开源 OLAP 系统的基础上实施原型系统包括查询计划生成器和物理连接运算符。</li>
+<li>在大量实验中，我们证明 SPRINTER 的性能明显优于最先进的基于 CPU 的协同处理 OLAP处理系统。</li>
+</ul>
+<h3 id="2-2-sprinter-中使用最坏情况下最优连接算法"><a href="#2-2-sprinter-中使用最坏情况下最优连接算法" class="headerlink" title="2.2 sprinter 中使用最坏情况下最优连接算法"></a>2.2 sprinter 中使用最坏情况下最优连接算法</h3><p>当n-ary连接操作符的输入大小非常大时，使用<strong>GPU进行排序</strong>可以进一步提高查询性能。因此，SPRINTER使用不同的排序算法和技术取决于要排序的表的基数，排序列的数量，和GPU内存的容量，在GPU排序。</p>
+<p>表1中基于比较的算法意味着，它们需要在排序的key值（如快速排序、合并排序、气泡排序）和基于非比较的算法之间进行比较 n，它们不需要这样的比较来进行排序（例如，radix排序。对于一个给定的N个元组值的输入数组，每个元组值由k个列组成，我们知道的速度的极限 基于比较的算法为O（N.loдN），而基于非比较的算法为O（k.N）。因此，如果k很小，后者通常比前者快。</p>
+<p><strong>在那个case，SPRINTER使用异构排序[15]，有效地利用CPU和GPU。</strong></p>
+<p>we assume that <em>X</em> is too large to fit in GPU memory, and so, we need to split it into six subar rays {<em>X</em>1, · · · ,<em>X</em>6}. </p>
+<p>虽然异构排序在CPU上可以在CPU和GPU上使用不同的算法，但我们在GPU上使用radix排序 和在CPU上的合并排序，因为该组合通常显示出最好的性能。</p>
+<p>异构排序使用多个GPU流，以隐藏主存和GPU模因之间的数据拷贝成本 y尽可能通过重叠三种低级GPU操作，H2D拷贝、排序和D2H拷贝。</p>
+<p>两两合并成一个新的这下一个x2</p>
+<h3 id="3-一个激励例子"><a href="#3-一个激励例子" class="headerlink" title="3 一个激励例子"></a>3 一个激励例子</h3><h3 id="4-n个连接树的查询规划方法"><a href="#4-n个连接树的查询规划方法" class="headerlink" title="4 n个连接树的查询规划方法"></a>4 n个连接树的查询规划方法</h3><h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><h3 id="6-odel"><a href="#6-odel" class="headerlink" title="6 odel"></a>6 odel</h3><h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3>
             </div>
 
             <!-- Post Comments -->

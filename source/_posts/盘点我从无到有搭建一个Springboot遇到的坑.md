@@ -1,7 +1,8 @@
 ---
 title: 盘点我从无到有搭建一个Springboot遇到的坑
 date: 2021-07-31 16:46:33
-categories: - Spring Boot
+categories: 
+- Spring Boot
 tags:
 - java
 - 框架

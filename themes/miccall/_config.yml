@@ -25,6 +25,7 @@ Nav:
     icon:
         github: https://github.com/wzr1005
         # 500px: http://500px.com
+        zhihu: https://www.zhihu.com/people/wu-zhen-ren
         
     pages:
         简历: 
