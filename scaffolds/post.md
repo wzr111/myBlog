@@ -1,8 +1,10 @@
 ---
 title: {{ title }}
 date: {{ date }}
-categories：
-    - 
+categories:
 tags:
-thumbnail: 
+thumbnail:
 ---
+categories:
+tags:
+thumbnail:

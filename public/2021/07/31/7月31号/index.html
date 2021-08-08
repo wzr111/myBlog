@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a>
+	                        <a class="category-link" href="/categories/Spring-Boot/">Spring Boot</a></li><li><a class="category-link" href="/categories/Spring-Boot/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a></li><li><a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/ustc/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a>
 	                    </ul>
 	        </li>
 	        
@@ -138,6 +138,12 @@
                     <li>
                         <a title="github" href="https://github.com/wzr1005" target="_blank" rel="noopener">
                             <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="zhihu" href="https://www.zhihu.com/people/wu-zhen-ren" target="_blank" rel="noopener">
+                            <i class="icon fa fa-zhihu"></i>
                         </a>
                     </li>
                     
@@ -222,6 +228,13 @@
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0644n9ytj30x503r74d.jpg"></p>
 <p>此时请求users方法的URL方法的URL路径就是…/user/users</p>
 <p>@PreAuthorize 注解 方法前拦截判断是否有权限</p>
+<p>@OrderBy </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table(name = &quot;MAPKEY_PERSON&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@OneToMany(targetEntity = Book.class, cascade = CascadeType.ALL, mappedBy = &quot;person&quot;)</span></span><br><span class="line">    <span class="meta">@OrderBy(name = &quot;isbn ASC, name DESC&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> List books = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Transient</p>
+<p>@Transient表示该属性并不是一个到数据库表的字段的映射，</p>
+<p>指定的这些属性不会被持久化，ORM框架将忽略该属性。</p>
+<p>如果一个属性并非数据库表的字段映射。就务必将其标示为@Transient。</p>
+<p>否则，ORM框架默认其注解为@Basic</p>
 
             </div>
 
