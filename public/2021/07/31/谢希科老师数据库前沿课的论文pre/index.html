@@ -167,7 +167,7 @@
 <p>离谱，wps新版的划词翻译的地方还不好找，<br><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0c3yhb81j32380h8n0g.jpg"></p>
 <p>如果不登陆的话，功能都是灰色的，微信扫描之后功能就亮了。</p>
 <p>短跑器：一种针对复杂OLAP查询的快速n元连接查询处理方法<br>复杂OLAP查询的快速n元连接查询处理方法</p>
-<h5 id="超键-super-key-在关系中能唯一标识元组的属性集称为关系模式的超键"><a href="#超键-super-key-在关系中能唯一标识元组的属性集称为关系模式的超键" class="headerlink" title="超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键"></a>超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键</h5><h5 id="候选键-candidate-key-不含有多余属性的超键称为候选键"><a href="#候选键-candidate-key-不含有多余属性的超键称为候选键" class="headerlink" title="候选键(candidate key):不含有多余属性的超键称为候选键"></a>候选键(candidate key):不含有多余属性的超键称为候选键</h5><h5 id="主键-primary-key-用户选作元组标识的一个候选键程序主键"><a href="#主键-primary-key-用户选作元组标识的一个候选键程序主键" class="headerlink" title="主键(primary key):用户选作元组标识的一个候选键程序主键"></a>主键(primary key):用户选作元组标识的一个候选键程序主键</h5><p><strong>外键 (FK)</strong> 是用于建立和加强两个表数据之间的链接的<strong>一列</strong>或<strong>多列</strong></p>
+<h1 id="lt-lt-lt-lt-lt-lt-lt-HEAD"><a href="#lt-lt-lt-lt-lt-lt-lt-HEAD" class="headerlink" title="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</h1><h5 id="超键-super-key-在关系中能唯一标识元组的属性集称为关系模式的超键"><a href="#超键-super-key-在关系中能唯一标识元组的属性集称为关系模式的超键" class="headerlink" title="超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键"></a>超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键</h5><h5 id="候选键-candidate-key-不含有多余属性的超键称为候选键"><a href="#候选键-candidate-key-不含有多余属性的超键称为候选键" class="headerlink" title="候选键(candidate key):不含有多余属性的超键称为候选键"></a>候选键(candidate key):不含有多余属性的超键称为候选键</h5><h5 id="主键-primary-key-用户选作元组标识的一个候选键程序主键"><a href="#主键-primary-key-用户选作元组标识的一个候选键程序主键" class="headerlink" title="主键(primary key):用户选作元组标识的一个候选键程序主键"></a>主键(primary key):用户选作元组标识的一个候选键程序主键</h5><p><strong>外键 (FK)</strong> 是用于建立和加强两个表数据之间的链接的<strong>一列</strong>或<strong>多列</strong></p>
 <p>通过将保存表中主键值的一列或多列添加到另一个表中，可创建两个表之间的链接。这个列就成为第二个表的外键。</p>
 <p><strong>一张表外键的值一般来说是另一张表主键的值。因此，外键的存在使得表与表之间可以联系起来</strong></p>
 <p>FOREIGN KEY 约束防止这种情况的发生。如果主键表中数据的更改使之与外键表中数据的链接失效，则这种更改是不能实现的，从而确保了引用完整性。如果试图删除主键表中的行或更改主键值，而该主键值与另一个表的 FOREIGN KEY 约束值相关，则该操作不可实现。若要成功更改或删除FOREIGN KEY 约束的行，可以先在外键表中删除外键数据或更改外键数据，然后将外键链接到不同的主键数据上去。</p>
@@ -291,8 +291,86 @@
 <p>如果一个连接图G只有<strong>一个</strong>核心子图<strong>核心</strong>，那么我们可以将G分解为核心子图核心和一组彼此在<strong>边不相交的非核心子图</strong>。</p>
 <p>我们就可以使用r 将上述两种分解方法分别表示为D1={core、G1、G2、G3}和D2={core、G1}。</p>
 <p>算法1提供了仅包含单个核心子图的查询的基本查询规划方法。</p>
-<p>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak的根节点 用非核心子图表示查询计划中的根节点的子节点。</p>
-<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><h3 id="6-odel"><a href="#6-odel" class="headerlink" title="6 odel"></a>6 odel</h3><h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3>
+<p>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak<strong>的root</strong>根节点 用非核心子图表示查询计划中的根节点的子节点。用非核心子图表示查询计划中的根节点的<strong>子节点。</strong></p>
+<p>**从每个分解Di中生成一个查询计划Pi 3-9)**从每个分解Di中生成一个查询计划Pi 3-9)从每个分解Di中生成一个查询计划Pi 3-9)</p>
+<p>当从非核心子图制作连接子树Sj时 ，通常有很多可能的连接子树。</p>
+<p>！！我们只考虑为一个<strong>非核心子图生成一个左深二进制连接子树，这可以显著减少 查询计划的搜索空间</strong>。前面有证明，至于为什么 需要搞一搞</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0drbd5cpj30jp0h3760.jpg"></p>
+<p>图b为左深二元连接树</p>
+<p>将核心子图作为查询计划的根也是减少查询计划搜索空间的启发式方法。</p>
+<p>背后的直觉是 通过在查询计划的最后一步<strong>处理事实表上的FK-FK连接</strong>，从而减少从非核心子图中的连接操作生成的中间结果量。</p>
+<p><strong>代码5-7对于每一个分解方法Di计算代价，第九行做排序</strong></p>
+<p>第11行选择最好的方案，</p>
+<p>背后的直觉是 通过在查询计划的最后一步处理事实表上的FK-FK连接，从而减少从非核心子图中的连接操作生成的中间结果量。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0dx85c34j30k60fl0tz.jpg"></p>
+<p>图6显示了由上述两个分解的D1={core、G1、G2、G3}和D2={core、G1}生成的两个可能的查询计划树。</p>
+<p>图6中的每个二进制连接运算符都对应于一条绿色的边</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0dxpwk50j30hn093dgo.jpg"></p>
+<p>相比之下，图6中的每个根n-连接运算符对应于图5中的一组蓝色边{e4，e5}。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0dqng0raj30ik06d0t4.jpg"></p>
+<p>For example, <em>C</em> appears three times in Figure 6(a) since it is shared among three subgraphs {<em>G</em>1,<em>G</em>2,<em>G</em>3}三种颜色 in Figure 5.</p>
+<p>When comparing two query plans in Figure 6, we can say the plan <em>P</em>1 就是D1 usually has a lower cost than the plan <em>P</em>2 since <em>P</em>1 scans a dimension table <em>C</em> two more times, whereas <em>P</em>2 scans two fact tables <em>SR</em> and <em>CS</em> one more time.</p>
+<h4 id="4-2-针对激励性查询的查询计划"><a href="#4-2-针对激励性查询的查询计划" class="headerlink" title="4.2 针对激励性查询的查询计划"></a>4.2 针对激励性查询的查询计划</h4><p>我们将解释当一个查询中有多个核心子图时的查询规划方法。我们将核心子图的数量表示为Ncore。这种查询的一种朴素的查询规划方法是将连接图中的特定的核心视为连接图中的唯一的核心，并将第4.1节中解释的方法应用于连接图。</p>
+<p>一种更好的规划方法是推广方法 将算法1递归地应用于所有非核心子图。</p>
+<p><strong>我们只需要进行修改算法1中的第6行。</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0dzmeix9j30gp03ejra.jpg"></p>
+<p>Ndcmp 是以ci为子图核心时，分解数，Ncore个核心子图，</p>
+<p>如果算法1中的第6行使用算法2，则每个分解都可以生成多个查询计划。</p>
+<p>对于一个特定的分解Dj(1≤j≤Ndcmp(Ci))，Nsubg(Dj)非核心子图，</p>
+<p>in Figure 6,</p>
+<p>*Nsubg(<em>D</em>1) = 3, and *Nsubg(<em>D</em>2) = 1.</p>
+<p><strong>对于每个子图Gk，都存在Nrecur(Gk)查询计划。</strong></p>
+<p>因此，我们可以计算出该基因产生的可能计划的数量 已排序方法，最多可以有Ncore(G)n-ary连接运算符，如Eq.2</p>
+<p><img src="C:\Users\wzr\Desktop\myblog\source_posts\谢希科老师数据库前沿课的论文pre\008i3skNgy1gt0e0e5j73j30ic03bwej.jpg"></p>
+<p>在图6(a)中，可以生成3！=6查询计划取决于连接子树的顺序。</p>
+<p>我们不考虑连接子树之间的顺序，因为<strong>总处理时间 连接子树是相同的</strong>，不管顺序如何。</p>
+<h2 id="5-n-ARY-JOIN处理方法"><a href="#5-n-ARY-JOIN处理方法" class="headerlink" title="5 n-ARY JOIN处理方法"></a>5 n-ARY JOIN处理方法</h2><p>在本节中，我们将介绍SPRINTER的n连接处理方法。</p>
+<p>我们将执行一种处理具有一组子连接子树的n个连接运算符的朴素方法</p>
+<p>请执行以下六个步骤。</p>
+<ul>
+<li>步骤1：逐个评估{S1、·、·、Sn}。Si为连接子树</li>
+<li>步骤2：计算{S1、·、··、Sn}结果的必要统计数据。</li>
+<li>步骤3：估计连接变量的每个全局顺序的成本。 </li>
+<li>步骤4：选择最佳的全局变量顺序。</li>
+<li>步骤5：按全局顺序对{S1、·、·、Sn}的结果进行排序。</li>
+<li>第6步：在n个已排序的关系上合并连接。</li>
+</ul>
+<p>对于一个n-ary连接操作符，子节点的可能顺序数变为n！</p>
+<p>在原则上。我们假设n个连接运算符的子级从左到右计算。</p>
+<p>对于朴素方法，无论处理子节点的顺序如何，处理n-ary连接运算符的时间都变得相同</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0e2iux1lj30ix0fjdgo.jpg"></p>
+<p>图7(a)显示了一个用于评估三个连接子树的示例时间线.</p>
+<p>我们将将Si计算为Teval(Si)的经过时间，以及对其结果进行排序的经过时间表示为Tsort(Si)。</p>
+<p>图7(a)显示了一个用于评估三个连接子的示例时间线</p>
+<p>我们将将Si计算为Teval(Si)的<strong>经过时间</strong>，以及<strong>对其结果进行排序</strong>的经过时间表示为Tsort(Si)。</p>
+<p>我们假设Teval(Si)=Tsort(Si)(1≤i≤3) 为了简单起见，Teval(Si)&lt;Teval(Sj)(i&lt;j)。经过时间按ij递增</p>
+<p><strong>步骤2-4在图7(a)中的时间t1时完成，它确定了连接列之间的一定全局应用TJ算法的顺序。</strong></p>
+<p>步骤5根据全局顺序对每个结果进行排序，</p>
+<p>步骤6在时间t2时使用<strong>第2节2.2中所述的TJ(Tributary Join)算法</strong>完成。</p>
+<p>我们可以知道，在图中，总经过的时间不会改变 即使Ure7(a)，即使{S1、S2、S3}的评估顺序发生了改变，或者即使是Teval(Si)&gt;TSort(Si)或Teval(Si)&lt;Tsort(Si)。</p>
+<p>时间t1，因此，即使我们利用GPU进行排序步骤，也很难大大减少总运行的时间。因此，我们使用一种改进的方法来处理一个n-ary连接算子，它由o f请执行以下四个步骤。</p>
+<ul>
+<li>步骤1：估计连接变量的每个全局顺序的成本。</li>
+<li>步骤2：选择最佳的全局变量顺序。</li>
+<li>步骤3：对结果进行重叠排序。</li>
+<li>步骤 4: 在n个已排序的关系上合并连接。</li>
+</ul>
+<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><h3 id="6-odel"><a href="#6-odel" class="headerlink" title="6 odel"></a>6 odel</h3><h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3><blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>659ab8ab41e0f048755673e552dec5884206a142</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+
             </div>
 
             <!-- Post Comments -->
