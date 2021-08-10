@@ -172,8 +172,8 @@
 <p><strong>一张表外键的值一般来说是另一张表主键的值。因此，外键的存在使得表与表之间可以联系起来</strong></p>
 <p>FOREIGN KEY 约束防止这种情况的发生。如果主键表中数据的更改使之与外键表中数据的链接失效，则这种更改是不能实现的，从而确保了引用完整性。如果试图删除主键表中的行或更改主键值，而该主键值与另一个表的 FOREIGN KEY 约束值相关，则该操作不可实现。若要成功更改或删除FOREIGN KEY 约束的行，可以先在外键表中删除外键数据或更改外键数据，然后将外键链接到不同的主键数据上去。</p>
 <p><strong>OLAP</strong>联机分析处理是一种软件技术，它使分析人员能够迅速、一致、交互地从各个方面观察信息，以达到深入理解数据的目的。</p>
-<p>随着市场竞争的日趋激烈，企业更加强调决策的及时性和准确性，这使得以<strong>支持决策管理分析</strong>为主要目的的应用迅速崛起，这类应用被称为联机分析处理，它所存储的数据被称为信息数据。</p>
-<p>数据仓库：数据仓库系统的主要应用主要是OLAP（On-Line Analytical Processing），支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。</p>
+<p>随着市场竞争的日趋激烈，企业更加强调决策的及时性和准确性，这使得以<strong>支持决策管理分析</strong>为主要目的的应用迅速崛起，这类应用被称为<strong>联机分析处理</strong>，它所存储的数据被称为信息数据。</p>
+<p>数据仓库：数据仓库系统的主要应用主要是OLAP（On-Line Analytical Processing），<strong>支持复杂的分析操作，侧重决策支持，并且提供直观易懂</strong>的查询结果。</p>
 <p>基本每家电商公司都会经历，从只需要业务数据库到要数据仓库的阶段。</p>
 <ul>
 <li>电商早期启动非常容易，入行门槛低。找个外包团队，做了一个可以下单的网页前端 + 几台服务器 + 一个MySQL，就能开门迎客了。这好比手工作坊时期。</li>
@@ -195,24 +195,44 @@
 <p><strong>本OLAP查询</strong>，基于成本模型 生成包含 <strong>n 元连接运算符</strong>的 查询计划。</p>
 <p><strong>+：a+b所以‘+’就是二元运算符。<br>++：a++所以++就是一元运算符。</strong></p>
 <p>n元就是n个元素，n个表做连接运算</p>
-<h3 id="本文结论：SPRINTER-的性能优于最先进的-OLAP-系统。"><a href="#本文结论：SPRINTER-的性能优于最先进的-OLAP-系统。" class="headerlink" title="本文结论：SPRINTER 的性能优于最先进的 OLAP 系统。"></a>本文结论：SPRINTER 的性能优于最先进的 OLAP 系统。</h3><p>keywords: n元连接运算符，查询规划，查询优化，FKFK连接，复杂OLAP查询处理，协同处理</p>
+<h3 id="本文结论：SPRINTER-的性能优于最先进的-OLAP-系统。"><a href="#本文结论：SPRINTER-的性能优于最先进的-OLAP-系统。" class="headerlink" title="本文结论：SPRINTER 的性能优于最先进的 OLAP 系统。"></a>本文结论：SPRINTER 的性能优于最先进的 OLAP 系统。</h3><p>keywords: n元连接运算符，查询规划，查询优化，FK-FK连接，复杂OLAP查询处理，协同处理</p>
 <p>现有系统利用了各种技术，例如中间结果的流水线</p>
 <p>OLAP查询处理的概念现在正被广泛应用于各种应用中，包括图形分析[1,13]、人工智能[22][20,26]和生物信息学</p>
 <p>In particular, the number of queries which</p>
 <p>contain join operations between a pair of foreign (or non</p>
 <p>unique) keys rather than a conventional pair of primary and</p>
 <p>foreign keys increases in the applications. </p>
-<p>尤其是，查询的数量包括了外键之间的连接操作，而不是增加在应用程序的传统主键和外键</p>
+<p>尤其是，查询的数量<strong>包括了外键之间的连接操作</strong>，而不是增加在应用程序的<strong>传统主键和外键</strong></p>
 <p>本文将这种连接操作表示为FK-FK连接，一个FK-FK连接通常会产生一个lar 由于重复的连接键值而导致的连接结果数。</p>
 <p><strong>流水线技术通过在一组由其余关系构建的哈希表中查找探测关系的每个元组来计算连接树中的一系列多个连接运算符 [27,50]。</strong></p>
 <p>它可能对PK-FK连接的查询有效，但对于<strong>事实表中包含FK-FK连接的复杂查询</strong>可能无效</p>
+<p><strong>内连接</strong>实际上就是利用 <strong>where 子句</strong>对两张(多表)表形成的笛卡尔积进行筛选,<strong>我们前面学习的查询都是内连接,也是在开发过程中用的最多的连接查询。</strong></p>
+<p><strong>外连接，如果是全外连接，左*右含有的行</strong> </p>
+<p>数据库视图：</p>
+<p>视图是一种<strong>虚拟</strong>的表（逻辑表），具有和<strong>物理表</strong>相同的功能。<br>可以对视图进行<strong>增，改，查</strong>，操作，<br>试图通常是有<strong>一个表或者多个表的行或列的子集</strong>。<br>对视图的修改<strong>不影响</strong>基本表。<br>它使得我们获取数据<strong>更容易</strong>，相比多表查询</p>
+<p>视图是一个虚拟表，<strong>其查询的数据来自于视图定义时的 as select xx 查询语句</strong>。视图的列来自于一个表或多个表，所以视图不可以和表名重名。<br>数据多用作查询，一般不会通过视图去修改数据。</p>
 <p><strong>因为存在以下两个问题：</strong>许多key比较 以及大量的内存使用量。</p>
-<p>首先，探测关系中每个元组的连接键值需要与哈希表中的所有重复键值相匹配。可能会有很多比赛到期 对于FK-FK连接操作，这可以根据连接键值的重复程度成比例地大大降低查询性能。</p>
+<p>首先，探测关系中每个元组的连接键值需要与哈希表中的<strong>所有重复键值相匹配</strong>。可能会有很多比赛到期 对于FK-FK连接操作，这可以根据连接键值的重复程度成比例地大大降低查询性能。</p>
 <p>n元连接操作和二元连接操作相比，可以减少中间结果数量，大多数情况下更有效，</p>
 <p>多路连接处理已用于分布式查询处理[2,13,49]和图形模式查询处理[31,44]，但几乎没有在内存中的OLAP系统中使用 ，<strong>因为在内存内的处理环境中，哈希连接通常优于归并排序连接</strong>，并且不同于OLAY图形模式查询，OLAY查询是ad-hoc(点对点)和acyclic(无环)；</p>
 <p>我们提出了一种方法，可以生成n元连接的查询，而不是传统的二元操作，</p>
 <p>生成一个具有n-ary连接运算符(称为n-ary连接树)的查询计划是很简单的，相比较二元 搜索空间变得更大，</p>
-<p>我们<strong>提出了所使用的成本模型</strong>和一种<strong>查询优化方法 t</strong>允许查询规划方法只有在与传统的二进制左深连接树相比有益时才生成n-ary连接树</p>
+<p>我们<strong>提出了所使用的成本模型</strong>和一种<strong>查询优化方法 t</strong>允许查询规划方法</p>
+<p>实际应用环境很少 出现简单的二元连接,而<strong>更多的是复杂的多元连接</strong>(multi-mays join)</p>
+<p>n 元连接可以以多种方式分解成 n−1 个二 元连接，每二元连接又可以采用多种算法,因此存在大量执行计划。</p>
+<p>算法代价以 I/O 为主,CPU 因等待 I/O 而空闲,因此,优化连接 性能最有效的方法是减少 I/O 操作</p>
+<p><strong>等值连接</strong>与<strong>自然连接</strong>是应用最广泛的连接操作,自然连接与等值连接无本质区别,可以通过修改属性名把 等值连接操作转化为自然连接操作,所以研究自然连接具有普遍意义.本节以自然连接(ڇ(为例,设 R 和 S 是两个 数据集,attr(⋅)表示数据集的属性集</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtaut6tcsnj31160nuadm.jpg"></p>
+<h3 id="与等值连接的区别"><a href="#与等值连接的区别" class="headerlink" title="与等值连接的区别"></a>与等值连接的区别</h3><p>\1. 等值连接中不要求属性值完全相同，而自然连接要求两个关系中进行比较的必须是相同的属性组（属性名可以不同），即要求必须有相同的值域。</p>
+<p>\2. 等值连接不将重复属性去掉，而自然连接去掉重复属性，也可以说，自然连接是去掉重复列的等值连接（如图所示）</p>
+<p>由于连接运算结果是确定的,因此无论采用何种顺序执行多元连接,<strong>结果集大小是一致的</strong>.因此,我们需找 到这些执行计划中 <strong>I/O 代价最小的作为最优执行计划.</strong></p>
+<p>较直接的算法为逐一计算每个执行计划的 I/O 代价,搜索 I/O 代价最小的执行计划</p>
+<p>首先,对于任意一个执行计划,需要逐一计算 SiڇSj 的结果集大小Φij 和 6 种算法的 I/O代价,选取 I/O 代价最小的算法作为 SiڇSj 的执行算法.那么对于一个 n 元连接的执行计划选择,至少要计算<img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtauvy654lj308002cdfq.jpg"></p>
+<p>次连接代价。并在这么多代价里面搜索最小代价。</p>
+<p>只有在与传统的二进制左深连接树相比<strong>有益时</strong>才生成n-ary连接树</p>
+<p>保证 多作业的并行性同时会降低每个作业的并行性,多作业并行并没有带来额外的性能提升</p>
+<p>若 I/O 密集型和 CPU 密集型作业并行执行,则有助于提高资源利用率,提高性能</p>
+<p>若多个 I/O 密集型作业并行执行,每个作业需要 的资源不能互补,而且会争抢 I/O 资源</p>
 <p>单向连接啥基于最坏情况最优连接算法， the worst case optimal join algorithm，</p>
 <p>we have demonstrated that SPRINTER significantly outperforms the state-of-the-art OLAP query processing systems in terms of both processing speed and data size that can be <strong>processed without our of memory</strong>.</p>
 <p>我们已经证明了SPRINTER在处理速度和数据方面都显著优于最先进的OLAP查询处理系统 可以在内存不溢出的情况下处理</p>
