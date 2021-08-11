@@ -303,7 +303,7 @@
 <p>连接图G的核心子图，即核心=(Vc，Ec)⊆G，<strong>s.t.是subject to 的缩写，表示约束条件。在。。。的情况下</strong>。</p>
 <p>其中任何两个顶点X和Y在X∈Vc和Y∈Vc的情况下，通过as连接 <em>E**X</em>,<em>Y</em> ⊆ <em>E<strong>c</strong>E**c</em> s.t. <em>g</em>(<em>e</em> ∈ <em>E**X</em>,<em>Y</em> )</p>
 <p>= FK-FK, <em>f</em> (<em>X</em>) = <em>f act</em> and <em>f</em> (<em>Y</em>) = <em>f act</em>.</p>
-<p>在图3中，一个子图{SS，SR，CS}是一个核心子图，因为所有的顶点都是事实表，</p>
+<p>在图3中，一个子图{SS，SR，CS}是一个核心子图，因为<strong>所有的顶点都是事实表</strong>，</p>
 <p>事实数据表是包含描述业务内特定事件的数据。是发生在现实世界中的操作型事件所产生的可度量数据，<strong>通常包含大量的行。</strong>日常查询请求的主要目标就是基于事实表展开计算和聚合操作。<br>从最低粒度级别来看，事实表行对应一个度量事件，也可以说，一个度量事件必然对应一个最低粒度的事实行为。</p>
 <p>我们认为的一行数据是什么样的，粒度。</p>
 <p>事实数据表不应该包含描述性的信息，也不应该包含除数字度量字段及使事实与维度表中对应项的相关索引字段除外的任何数据。</p>
@@ -312,8 +312,77 @@
 <p>如果一个连接图G只有<strong>一个</strong>核心子图<strong>核心</strong>，那么我们可以将G分解为核心子图核心和一组彼此在<strong>边不相交的非核心子图</strong>。</p>
 <p>我们就可以使用r 将上述两种分解方法分别表示为D1={core、G1、G2、G3}和D2={core、G1}。</p>
 <p>算法1提供了仅包含单个核心子图的查询的基本查询规划方法。</p>
-<p>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak的根节点 用非核心子图表示查询计划中的根节点的子节点。</p>
-<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><h3 id="6-odel"><a href="#6-odel" class="headerlink" title="6 odel"></a>6 odel</h3><h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3>
+<p>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak的根节点 用非核心子图表示查询计划中的根节点的子节点。我们将将核心子图Ci作为根节点时的分解数表示为Ndcmp(Ci)。</p>
+<h4 id="4-3-搜索空间"><a href="#4-3-搜索空间" class="headerlink" title="4.3 搜索空间"></a>4.3 搜索空间</h4><p>分解的数量取决于选择哪个核心子图作为根节点，我们可以用我们的方法计算一个查询的可能查询计划的数量。一般来说，在连接图G中有Ncore(G)核心子图。</p>
+<p>计算具有由一个朴素m生成的单个n-ary连接运算符（作为一个根节点）的可能计划的数量 </p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtc3zlb5u1j30uo074dfy.jpg"></p>
+<p>如果算法1中的第6行使用算法2，则每个分解都可以生成多个查询计划</p>
+<p>对于一个特定的分解Dj(1≤j≤Ndcmp(Ci))，我们假设存在Nsubg(Dj)<strong>非核心子图</strong> hs</p>
+<p>对于每个子图Gk，都存在Nrecur(Gk)查询计划。因此，我们可以计算出该基因产生的可能计划的数量 已排序方法，最多可以有Ncore(G)n-ary连接运算符，</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0e0e5j73j30ic03bwej.jpg"></p>
+<p>在图6(a)中，可以生成3！=6查询计划取决于连接子树的顺序。在式式中。2，我们不考虑连接子树之间的顺序，因为总处理时间 连接子树是相同的</p>
+<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><p>在本节中，我们将介绍SPRINTER的n连接处理方法。</p>
+<p>我们将执行一种处理具有一组子连接子树的n个连接运算符的朴素方法 g请执行以下六个步骤。</p>
+<ul>
+<li>步骤1：逐个评估{S1、·、·、Sn}。 Si为连接子树</li>
+<li>步骤2：计算{S1、·、··、Sn}结果的必要统计数据。</li>
+<li>步骤3：<strong>估计连接变量的每个全局顺序的成本</strong>。 </li>
+<li>步骤4：选择最佳的全局变量顺序。</li>
+<li>步骤5：按全局顺序对{S1、·、·、Sn}的结果进行排序。</li>
+<li>第6步：在n个已排序的关系上合并连接。</li>
+</ul>
+<p>对于一个n-ary连接操作符，子节点的可能顺序数变为n！</p>
+<p>对于n 在朴素方法中，无论处理子节点的顺序如何，处理n-ary连接运算符的所用时间都变得相同。</p>
+<p>步骤6在时间t2时使用第2节2.2中所述的TJ算法完成。</p>
+<p>朴素方法中，Teval(Si)和Tsort(Si)由于存在一种同步障碍而不能重叠</p>
+<p>因此，即使我们利用GPU进行排序步骤，也很难大大减少总运行的时间。因此，我们使用一种改进的方法来处理一个n-ary连接算子，它由of请执行以下四个步骤。</p>
+<ul>
+<li>步骤1：估计连接变量的每个全局顺序的成本。</li>
+<li>步骤2：选择最佳的全局变量顺序。</li>
+<li>步骤3：对结果进行重叠排序。</li>
+<li>步骤 4: 在n个已排序的关系上合并连接。</li>
+</ul>
+<p> <strong>图7(b)显示了修改后的方法的时间线。</strong></p>
+<p>步骤1-2中，它首先确定全局变量的顺序，而不计算{S1、···、Sn}的结果的统计数据 t1)<strong>。因为先计算 ，就达不到评估和排序的重叠效果</strong></p>
+<p>在步骤3中，它重叠了使用<strong>CPU评估S</strong>i，并使用GPU(i，j)对<strong>Sj</strong>的结果进行排序。</p>
+<p>在t中 他的方法是，无论{S1、S2、S3}的处理顺序如何，图7(b)中的总经过的时间仍然没有改变<strong>（箭头的总长度没有改变）</strong></p>
+<p>我们可以进一步减少如图7(b)所示的总运行时间。SPRINTER可以利用流水线技术来评估每个子连接子树，因为它的基础系统，即OmniSci，是一个 基于流水线技术。</p>
+<p><strong>由于SPRINTER可以同时使用CPU和GPU，</strong>并且同时使用流水线技术，在评估si的时候，排序sj，我们假设s1,s2,s3分别为gpu一次可处理数据大小的1倍，2倍，3倍。</p>
+<p>图中红色虚线表示主机（即主存）到设备（即GPU内存）的拷贝，记为H2D 复制。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0e2iux1lj30ix0fjdgo.jpg"></p>
+<h3 id="确定全局顺序"><a href="#确定全局顺序" class="headerlink" title="确定全局顺序"></a>确定全局顺序</h3><p>一般来说，在合理短的时间内精确计算每个全局连接变量顺序的成本是一个非常具有挑战性的问题。</p>
+<p>本文还提出了一种启发式算法来确定一个相当好的全局算法 对于OLAP查询的可变顺序快速，我们将在未来的工作中进一步改进。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0e86b0wmj30ir0d4q48.jpg"></p>
+<p>给定一个核心子图，它找到所有的连接变量，并为每个连接变量准备三个变量的组合&lt;w,|Ew|,Cw&gt;</p>
+<p>w是一个连接变量，Ew是w的连接条件数，Cw是w连接的约束的数量，Cw是关系中有w的数量，</p>
+<p>图8显示了TPC-DSQ17的一个核心子图，它有三个连接变量，项目、cust和票据。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtc61m91taj30dn06r74k.jpg"></p>
+<p>对于项目，|Estem|=2，和Citem=||CS||+||SR||+||SS||。</p>
+<p>然后，该算法按(|Ew|，Cw)的降序对三联体列表进行排序。</p>
+<p>则其中一个可以在全局变量顺序中排在另一个之前。 例如，item ≺ cust ≺ ticket 和cust ≺ item ≺ ticket 都是允许的。</p>
+<p>则其中一个可以在全局变量顺序中排在另一个之前。 例如，item ≺ cust ≺ ticket 和cust ≺ item ≺ ticket 都是允许的。</p>
+<p>直观地，算法选择具有更多连接条件和可能有更多元组作为更高优先级处理的连接变量，以减少对排序关系进行二分搜索的总量</p>
+<h4 id="5-2-排序策略"><a href="#5-2-排序策略" class="headerlink" title="5.2 排序策略"></a>5.2 排序策略</h4><p>三个因素：GPU的可用性，待排序的数据量的大小，数据字段的量，</p>
+<p>如果GPU不可用，则sprinter使用cpu非比较排序number of sorting columns is only one，</p>
+<p>其次，如果要排序的数据可以适应GPU内存，SPRINTER使用一个非比较基础 d或基于比较的GPU排序算法，具体取决于排序列的数量。</p>
+<p>第三，如果要排序的数据不能适合GPU内存，我们需要仔细选择</p>
+<p>一个排序算法 GPU排序缺乏良好实现的问题</p>
+<p>GPU[7]的一个基于比较的算法的实现速度仅比CPU[37]的实现算法略快。 </p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0echpj2vj30gl08mq3s.jpg"></p>
+<p>如果要排序的关系有多个排序列，并且大于GPU内存，典型的方法将将关系划分为子数组，使用基于比较的算法对每个子数列进行排序 m，并使用CPU合并子阵列。<strong>类似外部排序</strong></p>
+<p>用GPU排序，再用cpu合并比很多情况下都要慢。因此我们直接用cpu比较排序。</p>
+<p> If a relation has only a single sorting column,we just use heterogeneous sorting in Section 2.1 since there</p>
+<p>is a very fast implementation of a non-comparison based algorithm for GPU, and the cost of merging subarrays is not so large. </p>
+<h4 id="合并加入排序"><a href="#合并加入排序" class="headerlink" title="合并加入排序"></a>合并加入排序</h4><p>item、cust和ticket表示为i、c和 t</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0eh3ij05j30jc09s0tm.jpg"></p>
+<p>如果4放在最后面，是不是代价就会少很多？</p>
+<h4 id="进行查询优化的成本模型"><a href="#进行查询优化的成本模型" class="headerlink" title="进行查询优化的成本模型"></a>进行查询优化的成本模型</h4><p>使用n-ary连接运算符的查询处理可能并不总是比仅使用二进制连接运算符的传统查询处理方法获得更好的性能。因此，我们使SPRINTER成为一名将军 e只有在成本模型有利时才包含n个连接算符的查询计划。</p>
+<p>因此，我们建立了成本模型成本(PNew)和成本(Pold)，以确定成本(Pnew)&lt;成本(Pold)。</p>
+<p>我们将在查询处理过程中访问的元组（或散希表中的元素）的数量作为成本的度量。</p>
+<p> <strong>Cost model of the base system</strong></p>
+<p>We consider that a query plan <em>P**old</em> consists of <em>M</em> M 1 binary join operators for <em>M</em> relations.</p>
+<p>我们考虑PK-FK连接或FK-FK连接的每个二进制连接运算符都使用主内存哈希连接算法进行计算，该算法不仅在OmniSci[33]中很常见，而且在其他内存查询中也很常见 处理系统</p>
+<h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3>
             </div>
 
             <!-- Post Comments -->
