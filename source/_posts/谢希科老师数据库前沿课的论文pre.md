@@ -469,21 +469,21 @@ w是一个连接变量，Ew是w的连接条件数，Cw是w连接的约束的数�
 
 则其中一个可以在全局变量顺序中排在另一个之前。 例如，item ≺ cust ≺ ticket 和cust ≺ item ≺ ticket 都是允许的。
 
-直观地，算法选择具有更多连接条件和可能有更多元组作为更高优先级处理的连接变量，以减少对排序关系进行二分搜索的总量
+直观地，算法选择**具有更多连接条件**和**可能有更多元组**作为**更高优先级处理的连接变量**，以减少对**排序关系进行二分搜索**的总量。
 
 
 
 #### 5.2 排序策略
 
-三个因素：GPU的可用性，待排序的数据量的大小，数据字段的量，
+三个因素：**GPU的可用性**，**待排序的数据量的大小**，**数据字段的量**，
 
 如果GPU不可用，则sprinter使用cpu非比较排序number of sorting columns is only one，
 
-其次，如果要排序的数据可以适应GPU内存，SPRINTER使用一个非比较基础 d或基于比较的GPU排序算法，具体取决于排序列的数量。
+其次，如果要排序的数据可以适应GPU内存，SPRINTER使用一个非比较或基于比较的GPU排序算法，具体取决于**排序列的数量**。
 
 第三，如果要排序的数据不能适合GPU内存，我们需要仔细选择
 
-一个排序算法 GPU排序缺乏良好实现的问题
+一个排序算法 **GPU排序缺乏良好实现的问题**
 
 GPU[7]的一个基于比较的算法的实现速度仅比CPU[37]的实现算法略快。 
 
@@ -493,13 +493,11 @@ GPU[7]的一个基于比较的算法的实现速度仅比CPU[37]的实现算法�
 
 如果要排序的关系有多个排序列，并且大于GPU内存，典型的方法将将关系划分为子数组，使用基于比较的算法对每个子数列进行排序 m，并使用CPU合并子阵列。**类似外部排序**
 
-用GPU排序，再用cpu合并比很多情况下都要慢。因此我们直接用cpu比较排序。
+用GPU排序，再用cpu合并比很多情况下都要慢。**因此我们直接用cpu比较排序**。
 
- If a relation has only a single sorting column,we just use heterogeneous sorting in Section 2.1 since there
+ If a relation has only a single sorting column,we just use heterogeneous sorting in Section 2.1 since there is a very fast implementation of a non-comparison based algorithm for GPU, and **the cost of merging subarrays is not so large.** 
 
-is a very fast implementation of a non-comparison based algorithm for GPU, and the cost of merging subarrays is not so large. 
-
-#### 合并加入排序
+#### 合并加入排序 排序啥？
 
 item、cust和ticket表示为i、c和 t
 
@@ -511,11 +509,13 @@ item、cust和ticket表示为i、c和 t
 
 #### 进行查询优化的成本模型
 
+我们认为查询计划 P old 由 M-1 个二元连接运算符组成
+
 使用n-ary连接运算符的查询处理可能并不总是比仅使用二进制连接运算符的传统查询处理方法获得更好的性能。因此，我们使SPRINTER成为一名将军 e只有在成本模型有利时才包含n个连接算符的查询计划。
 
 
 
-因此，我们建立了成本模型成本(PNew)和成本(Pold)，以确定成本(Pnew)<成本(Pold)。
+因此，我们建立了成本模型成本(PNew)和成本(P old)，以确定成本(Pnew)<成本(Pold)。
 
 我们将在查询处理过程中访问的元组（或散希表中的元素）的数量作为成本的度量。
 
@@ -523,13 +523,47 @@ item、cust和ticket表示为i、c和 t
 
 We consider that a query plan *P**old* consists of *M* M 1 binary join operators for *M* relations.
 
-我们考虑PK-FK连接或FK-FK连接的每个二进制连接运算符都使用主内存哈希连接算法进行计算，该算法不仅在OmniSci[33]中很常见，而且在其他内存查询中也很常见 处理系统
+我们考虑PK-FK连接或FK-FK连接的**每个二进制连接运算符都使用主内存哈希连接算法**进行计算，该算法不仅在OmniSci[33]（GPU）排序中很常见，而且在其他内存查询中也很常见 处理系统
 
- 
+ 我们假设查询处理探测**最左关系的每个元组**，
+
+
+
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gt0em547udj30gx06bmxd.jpg)
+
+EQ3显示了Pold的成本函数，其中构建(Fi)是构建哈希表的成本函数，EQ4
+
+探测(F1)探测元组的成本函数 F1 EQ5
+
+
+
+我们可以假设F1的每个元组都与F2的哈希表中的dup2元素进行比较，而不管哈希表的类型如何（例如，开放寻址、单独的链接）。
+
+谓词：属于函数的一种，但其返回值是真值(true/false/unknown) 
+
+
+
+#### SPRINTER的成本模型
+
+一般来说，查询计划Pnew由M个关系的n-ary和二进制连接运算符组成。
+
+我们假设Pnew中至少有一个n个连接运算符，否则不需要生成Pnew。
+
+Eq.7表示n-ary连接处理的成本，其中包括n个连接子树结果的排序成本和使用TJ算法的连接成本。
+
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gt0es2hnx8j30f302r747.jpg)
+
+
+
+如果w1≺w2≺···≺wL被确定为n个连接操作器O的全局变量顺序，Eq。8显示了合并n个排序关系{Sˆi|1≤i≤n}的TJ算法的成本。
+
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gt0esnu7v4j30fq02sglh.jpg)
+
+
 
 ### 7 介绍了实验评价的结果
 
-
+**SPRINTER**与**现有的OLAP查询处理系统**所经过的复杂OLAP查询时间i进行比较
 
 
 
