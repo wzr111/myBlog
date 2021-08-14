@@ -265,7 +265,7 @@
 <p><strong>C1、C2和C3 是相同的关系，即关系C，但在查询处理过程中作为不同的关系来处理，这在OLAP处理系统中很常见。除了系统-x之外，还有许多系统包括 DingMonetDB[9]、CoGaDB[10]、Kinetica[21]和快速步骤[34]生成与图4(a)中几乎相同的查询计划，并以一次操作符的方式执行它。</strong>【？】</p>
 <p>2.23B就是22.3亿</p>
 <p>图4(a)中的计划在最后一个连接之前生成22.3亿(B)中间元组作为左操作数，并以CS的1.44亿(M)元组作为右操作数</p>
-<p>因为连接操作是FK-FK连接，并且在哈希表中有许多<strong>重复的键值</strong>，所以num 在<strong>探测连接</strong>过程中，哈希表中的key值被访问，我们称之为<strong>探测成本</strong>，这是巨大的，特别是160.9B倍。</p>
+<p>因为连接操作是FK-FK连接，并且在哈希表中有许多<strong>重复的键值</strong>，所以num 在<strong>探测连接</strong>过程中，哈希表中的key值被访问，我们称之为<strong>探测成本</strong>，这是探测成本，特别是160.9B倍。</p>
 <p>OmniSci[33]是一个开源的<strong>协同处理数据库系统</strong>，其中协同处理意味着<strong>同时</strong>利用<strong>cpu</strong>和<strong>gpu</strong>进行查询处理。</p>
 <p>如图b,它生成了一个左深连接的查询计划和a一样。</p>
 <p>但是是以<strong>非阻塞</strong>和<strong>流水线的方式</strong>执行计划，它<strong>不会生成和存储</strong>要连接的<strong>中间结果</strong>。</p>
@@ -288,8 +288,8 @@
 <p>此外，当我们计算在三个连接子树的结果中处理n-ary连接的总成本时，它变为312M.</p>
 <p>总之，SPRINTER的总处理成本约为1.07B，比其他两个系统的总处理成本要小得多。</p>
 <p>图4(d)显示了上述三个系统对TPC-DSSF=100数据库的查询性能。</p>
-<p>性能结果表明，OmniSci通过消除la，提高了系统x的性能 通过管道得到Rge中间结果，</p>
-<p>SPRINTER通过将单个大连接树分割成多个较小的连接子树并执行n个连接来提高OmniSci的性能 他是连接子树的结果。通过管道化消除大的中间结果，通过将单个大的连接树分割成多个较小的连接子树，并对连接子树的结果执行n个连接。</p>
+<p>性能结果表明，OmniSci通过流水线方式消除了单个大块的连接，</p>
+<p>SPRINTER通过将单个大连接树分割成多个较小的连接子树并执行n个连接来提高OmniSci的性能 通过将单个大的连接树分割成多个较小的连接子树，并对连接子树的结果执行n个连接。</p>
 <h3 id="4-n个连接树的查询规划方法"><a href="#4-n个连接树的查询规划方法" class="headerlink" title="4 n个连接树的查询规划方法"></a>4 n个连接树的查询规划方法</h3><p>我们首先将在第4.1节中介绍用于生成包含<strong>单个n-ary连接操作符</strong>的查询计划的查询规划方法。然后，我们将该方法<strong>推广</strong>到更复杂的查询中，这样它就可以生成一个在4.2节中包含多个n-ary连接的操作符。</p>
 <p>我们考虑一个来自给定查询Q的连接图</p>
 <p>查询Q的连接图G=(V、E、f(v∈V)、g(e∈E)、h(e∈E))是一个无向多重图。</p>
@@ -394,8 +394,40 @@
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0es2hnx8j30f302r747.jpg"></p>
 <p>如果w1≺w2≺···≺wL被确定为n个连接操作器O的全局变量顺序，Eq。8显示了合并n个排序关系{Sˆi|1≤i≤n}的TJ算法的成本。</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0esnu7v4j30fq02sglh.jpg"></p>
-<h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><p><strong>SPRINTER</strong>与<strong>现有的OLAP查询处理系统</strong>所经过的复杂OLAP查询时间i进行比较</p>
-<h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3>
+<h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><p><strong>SPRINTER</strong>与<strong>现有的OLAP查询处理系统</strong>所经过的复杂OLAP查询时间i进行比较,in the TPC-DS benchmark</p>
+<p>。详细地，我们通过实证验证了选择第5节中描述的排序算法的策略，</p>
+<p>在第6节中提出的成本模型，以及排序算法的性能。</p>
+<h5 id="实验设置"><a href="#实验设置" class="headerlink" title="实验设置"></a>实验设置</h5><p>查询和数据集：在 TPC-DS 基准测试中，共有 26 个 TPC-DS 查询至少有一个 FK-FK 连接 [30]</p>
+<p>环境：我们在一台机器上进行所有实验，配备了两台英特尔Xeonen10核cpu，</p>
+<p>512GB主存和一个11GB的NVIDIAGTX1080TiGPU。 操作系统OS7.5</p>
+<p>系统比较：与sprinter系统相比，OLAP系统分为两种类型：基于cpu的系统(如Syssem-x)和协同处理系统(如OmniSci)。每个系统都被设置为尽可能多地同时使用主存和GPU设备内存（仅用于共同处理系统）</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0f3q6554j30g50bfgmg.jpg"></p>
+<p>对于基于cpu的系统，System-Y是最先进的商业化的OLAP数据库系统之一，支持索引驱动的查询执行和查询优化技术，如bloomf 过滤器的散列连接和基于成本的查询规划器，</p>
+<p>这类似于System-X。但是，它生成了一个二进制（更加平衡的树，区别于作深树）的查询计划，这是与System-x的主要区别之一。</p>
+<p>此外，<strong>Sys tem-Y以流水线的方式处理查询计划</strong>，并支持查询执行的协变性。我们使用最新版本的系统x和系统y进行实验。</p>
+<p>using only CPU as SPRINTER(C) and the one of SPRINTER</p>
+<p>using both CPU and GPU as SPRINTER(G). </p>
+<p>我们表示 SPRINTER 的版本仅使用 CPU 作为 SPRINTER(C) 和 SPRINTER 之一使用 CPU 和 GPU 作为 SPRINTER(G)。</p>
+<p>此外，sprinter(C)和sprinter(G)的大多数查询的性能都优于所有系统，这是由于它们不同的查询计划和不同的连接处理</p>
+<p>对于Q64，SPRINTER(G)与Syssem-Y、System-X、MonetDB和Actia相比，提高了性能 n向量分别为6.6、7.4、20.1和5.1倍</p>
+<p>SPRINTER(C)和SPRINTER(G)之间的性能差距并不大，因为数据大小相对较小(SF=100)。</p>
+<p>We note that the current SPRINTER does not use advanced query optimization techniques that System-X and System-Y use, since its base system, OmniSci, does not support them yet. Thus, the performance of SPRINTER can be further <strong>improved by applying the optimization techniques</strong> to OmniSci or SPRINTER.</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0f956c1nj30w50jltcj.jpg"></p>
+<p>对所有测试的查询进行比较。与基于cpu的系统相比，现有的协同处理系统在处理时有更多的故障，通常性能更差。</p>
+<p>这是因为协同处理系统通常不使用先进的查询优化技术，而且还不够成熟，无法利用GPU来有效地处理复杂的查询。</p>
+<p>然而，图11中的TPC-DS查询通常具有较低的fi值（即，接近于0），因此，Sissem-X配备了支持索引驱动的查询执行和查询优化技术 执行OmniSci。 fi是什么</p>
+<p>对于OmniSci，即使在使用主内存执行查询时，如果查询变得更加复杂，它也往往会错误地估计所需的内存量， 因此，左较深的连接树变得越来越深。因此，OmniSci往往由于错误内存分配的m.E.或FK-FK连接的大量探测成本而失败。</p>
+<p>相比之下，SPRINTER虽然是基于OmniSci的，但没有失败，查询性能显着提升。 SPRINTER生成的查询计划中的左深连接子树比OmniSci的连接树小很多，同时， 几乎没有用于构建哈希表的事实表<br>EXPERIMENTAL EVALUATION</p>
+<h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3><p>本文提出了一种针对具有FK-FK连接的复杂OLAP查询的快速n-ary连接查询处理方法。</p>
+<p>它会生成一个包含n-ary连接运算符的查询计划，如果它优于 基于我们的成本模型的<strong>传统的左深二进制连接树</strong></p>
+<p>该计划可以通过将事实表格上的<strong>FK-FK连接</strong>放入一个n-ary连接操作符中，从而<strong>显著降低探测成本</strong>。</p>
+<p>We also have proposed an efficient <em>n</em>-ary join processing method which is based on the TJ algorithm and heuristic algorithm selecting a good global variable order. </p>
+<p>我们提出的sprinter已经可以集成到开源的内存OLAP系统，OmniSci，跨所有相关的层和模块。</p>
+<p>通过使用TPC-DS基准测试的实验，我们已经证明了 即使没有使用GPU排序，SPRINTER的性能也优于最先进的OLAP系统，尽管它的基础系统OmniSci达到了它们中第二差的性能。</p>
+<p>算法执行过程：</p>
+<p>算法1，确定了一个核心子图，然后对它的非核心子图一般是维表进行遍历，最后计算事实表的计算，尽量减少中间连接操作形成的结果量</p>
+<p>算法2就是算法1的推广，有多个核心子图，对它进行遍历</p>
+
             </div>
 
             <!-- Post Comments -->
