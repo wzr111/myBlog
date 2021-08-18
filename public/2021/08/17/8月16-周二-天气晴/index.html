@@ -151,56 +151,14 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://tva1.sinaimg.cn/large/008i3skNgy1gtikv2kt77j61900u0k4r02.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >8月14日</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >8月16-周二-天气晴</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>热搜配置： <a target="_blank" rel="noopener" href="http://10.0.8.61:8011/api/configSearchHot?page=0&amp;size=10&amp;sort=level,asc">http://10.0.8.61:8011/api/configSearchHot?page=0&amp;size=10&amp;sort=level,asc</a></p>
-<p>热搜统计：<a target="_blank" rel="noopener" href="http://10.0.8.61:8011/api/countSearchHot?page=0&amp;size=10&amp;sort=searchCounts,desc">http://10.0.8.61:8011/api/countSearchHot?page=0&amp;size=10&amp;sort=searchCounts,desc</a></p>
-<p>上移下移：</p>
-<p>假设在我们业务逻辑中需要传递一个 <code>UserForm</code>，接收 <code>age,name,param</code> 三个参数。并对其中输入进行进行校验，其中，<code>param</code> 没有具体的含义，只是为了说明问题。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;code&quot;</span>: <span class="number">400</span>,</span><br><span class="line">    <span class="attr">&quot;message&quot;</span>: <span class="string">&quot;must not be blank&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;data&quot;</span>: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>是有些字段不能为空，在实体类里面有定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Column(name=&quot;name&quot;,unique = true,nullable = false)</span></span><br><span class="line">  <span class="meta">@NotBlank</span></span><br><span class="line">  <span class="meta">@ApiModelProperty(value = &quot;展示名称&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>是可以既传请求体，也传参数的，</p>
-<p>Target object must not be null; nested exception is java.lang.IllegalArgumentException: Target object must not be null</p>
-<p>哦我弄的put请求。。应该要post的</p>
-<p>8/14我删除了countSearchHot类中没用的字段，以及download的一些相关代码。</p>
-<p>我们一般情况下都是写完代码，commit到本地仓库，生成本地仓库commit ID，当前提交版本号，然后push到远程仓库，。    </p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtg52iceinj60hs0dcq3e02.jpg"></p>
-<p><strong>git pull看起来像git fetch+get merge</strong></p>
-<p>ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Zero date value prohibited</p>
-<p>WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: S1009</p>
-<p>maven报错一般都是导错包，检查检查，不然发布的还是以前的版本</p>
-<p>Dto的字段名称跟数据库对应？</p>
-<p>排序的问题，还有update问题。</p>
-<p>Transaction silently rolled back because it has been marked as rollback-only”,</p>
-<p>​    “data”: <strong>null</strong></p>
-<p>是因为@Trasactional里面的注解写错了</p>
-<p>为什么数据有数据，查出来的字段全部为空null？</p>
-<p>Dto的问题，数据库查询出空字段的</p>
-<p>Post字段的名称是跟实体domain一致的。</p>
-<p>实体的字段名称需要和Dto一致！</p>
-<p>修改了字段，记得clean maven！</p>
-<p>不然查出来还是空的。</p>
-<p>传入卡片</p>
-<p>卡片正文是一个list，appcode 就一个应用，写死，pagecode，</p>
-<p><strong>1.Boolean类型,生成的get方法是get开头的(建议使用这个).</strong><br><strong>2.boolean类型,生成的get方法是is开头的(用这个最好重写getXxx()格式的方法).</strong></p>
-<p>defined in file [/Users/wuzhenren/IdeaProjects/dasheng/dasheng-admin/da-search/target/classes/com/tigerobo/dasheng/admin/modules/search/rest/ConfigSearchHotController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name ‘configSearchHotServiceImpl’ defined in file [/Users/wuzhenren/IdeaProjects/dasheng/dasheng-admin/da-search/target/classes/com/tigerobo/dasheng/admin/modules/search/service/impl/ConfigSearchHotServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name ‘configSearchHotRepository’: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Using named parameters for method public abstract void com.tigerobo.dasheng.admin.modules.search.repository.ConfigSearchHotRepository.updateLevel(java.lang.Integer) but parameter ‘Optional[targetLevel]’ not found in annotated query ‘update search_hot_config set level =:level -1 where level &gt;  targetLevel’!<br>    at </p>
-<p>Repository的sql写的有问题， ：或者？都是在传入参数绑定用的，别的和原生sql差不多。</p>
-<p>Named parameter not bound 绑定参数的问题。</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtjrn6zdv6j614w0aajs602.jpg"></p>
-<p>需要添加事务注解</p>
-<p>could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet”</p>
-<p>实体类和DTO和查询类名字要统一，数据库表和column要统一</p>
-<p>然后Maven-clean，重新编译运行。</p>
+                <p>query did not return a unique result</p>
+<p>sql中’:=’符号为对变量赋值；</p>
+<p>‘=’符号为if等条件判断中使用；</p>
 
             </div>
 
@@ -263,8 +221,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/08/14/8%E6%9C%8814/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/08/14/8%E6%9C%8814/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/08/17/8%E6%9C%8816-%E5%91%A8%E4%BA%8C-%E5%A4%A9%E6%B0%94%E6%99%B4/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/08/17/8%E6%9C%8816-%E5%91%A8%E4%BA%8C-%E5%A4%A9%E6%B0%94%E6%99%B4/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
