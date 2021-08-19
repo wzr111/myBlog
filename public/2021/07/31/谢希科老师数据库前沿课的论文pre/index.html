@@ -312,8 +312,7 @@
 <p>如果一个连接图G只有<strong>一个</strong>核心子图<strong>核心</strong>，那么我们可以将G分解为核心子图核心和一组彼此在<strong>边不相交的非核心子图</strong>。</p>
 <p>我们就可以使用r 将上述两种分解方法分别表示为D1={core、G1、G2、G3}和D2={core、G1}。</p>
 <p>算法1提供了仅包含单个核心子图的查询的基本查询规划方法。</p>
-<<<<<<< HEAD
-<p>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak的根节点 用非核心子图表示查询计划中的根节点的子节点。我们将将核心子图Ci作为根节点时的分解数表示为Ndcmp(Ci)。</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak的根节点 用非核心子图表示查询计划中的根节点的子节点。我们将将核心子图Ci作为根节点时的分解数表示为Ndcmp(Ci)。</p>
 <h4 id="4-3-搜索空间"><a href="#4-3-搜索空间" class="headerlink" title="4.3 搜索空间"></a>4.3 搜索空间</h4><p>分解的数量取决于选择哪个核心子图作为根节点，我们可以用我们的方法计算一个查询的可能查询计划的数量。一般来说，在连接图G中有Ncore(G)核心子图。</p>
 <p>计算具有由一个朴素m生成的单个n-ary连接运算符（作为一个根节点）的可能计划的数量 </p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtc3zlb5u1j30uo074dfy.jpg"></p>
@@ -322,14 +321,7 @@
 <p>对于每个子图Gk，都存在Nrecur(Gk)查询计划。因此，我们可以计算出该基因产生的可能计划的数量 已排序方法，最多可以有Ncore(G)n-ary连接运算符，</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0e0e5j73j30ic03bwej.jpg"></p>
 <p>在图6(a)中，可以生成3！=6查询计划取决于连接子树的顺序。在式式中。2，我们不考虑连接子树之间的顺序，因为总处理时间 连接子树是相同的</p>
-<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><p>在本节中，我们将介绍SPRINTER的n连接处理方法。</p>
-<p>我们将执行一种处理具有一组子连接子树的n个连接运算符的朴素方法 g请执行以下六个步骤。</p>
-<ul>
-<li>步骤1：逐个评估{S1、·、·、Sn}。 Si为连接子树</li>
-<li>步骤2：计算{S1、·、··、Sn}结果的必要统计数据。</li>
-<li>步骤3：<strong>估计连接变量的每个全局顺序的成本</strong>。 </li>
-=======
-<p>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak<strong>的root</strong>根节点 用非核心子图表示查询计划中的根节点的子节点。用非核心子图表示查询计划中的根节点的<strong>子节点。</strong></p>
+<p>=======<br>这种方法背后的直觉是使一个<strong>核心子图</strong>成为一个<strong>查询计划</strong>和mak<strong>的root</strong>根节点 用非核心子图表示查询计划中的根节点的子节点。用非核心子图表示查询计划中的根节点的<strong>子节点。</strong></p>
 <p>**从每个分解Di中生成一个查询计划Pi 3-9)**从每个分解Di中生成一个查询计划Pi 3-9)从每个分解Di中生成一个查询计划Pi 3-9)</p>
 <p>当从非核心子图制作连接子树Sj时 ，通常有很多可能的连接子树。</p>
 <p>！！我们只考虑为一个<strong>非核心子图生成一个左深二进制连接子树，这可以显著减少 查询计划的搜索空间</strong>。前面有证明，至于为什么 需要搞一搞</p>
@@ -369,18 +361,11 @@
 <li>步骤1：逐个评估{S1、·、·、Sn}。Si为连接子树</li>
 <li>步骤2：计算{S1、·、··、Sn}结果的必要统计数据。</li>
 <li>步骤3：估计连接变量的每个全局顺序的成本。 </li>
->>>>>>> c050ef667e21f7ae5e2e8f8620a157be214c5b23
 <li>步骤4：选择最佳的全局变量顺序。</li>
 <li>步骤5：按全局顺序对{S1、·、·、Sn}的结果进行排序。</li>
 <li>第6步：在n个已排序的关系上合并连接。</li>
 </ul>
 <p>对于一个n-ary连接操作符，子节点的可能顺序数变为n！</p>
-<<<<<<< HEAD
-<p>对于n 在朴素方法中，无论处理子节点的顺序如何，处理n-ary连接运算符的所用时间都变得相同。</p>
-<p>步骤6在时间t2时使用第2节2.2中所述的TJ算法完成。</p>
-<p>朴素方法中，Teval(Si)和Tsort(Si)由于存在一种同步障碍而不能重叠</p>
-<p>因此，即使我们利用GPU进行排序步骤，也很难大大减少总运行的时间。因此，我们使用一种改进的方法来处理一个n-ary连接算子，它由of请执行以下四个步骤。</p>
-=======
 <p>在原则上。我们假设n个连接运算符的子级从左到右计算。</p>
 <p>对于朴素方法，无论处理子节点的顺序如何，处理n-ary连接运算符的时间都变得相同</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gt0e2iux1lj30ix0fjdgo.jpg"></p>
@@ -394,14 +379,48 @@
 <p>步骤6在时间t2时使用<strong>第2节2.2中所述的TJ(Tributary Join)算法</strong>完成。</p>
 <p>我们可以知道，在图中，总经过的时间不会改变 即使Ure7(a)，即使{S1、S2、S3}的评估顺序发生了改变，或者即使是Teval(Si)&gt;TSort(Si)或Teval(Si)&lt;Tsort(Si)。</p>
 <p>时间t1，因此，即使我们利用GPU进行排序步骤，也很难大大减少总运行的时间。因此，我们使用一种改进的方法来处理一个n-ary连接算子，它由o f请执行以下四个步骤。</p>
->>>>>>> c050ef667e21f7ae5e2e8f8620a157be214c5b23
+<ul>
+<li>步骤1：估计连接变量的每个全局顺序的成本。</li>
+<li>步骤2：选择最佳的全局变量顺序。</li>
+<li>步骤3：对结果进行重叠排序。</li>
+<li>步骤 4: 在n个已排序的关系上合并连接。<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>c050ef667e21f7ae5e2e8f8620a157be214c5b23</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><p>在本节中，我们将介绍SPRINTER的n连接处理方法。</p>
+<p>我们将执行一种处理具有一组子连接子树的n个连接运算符的朴素方法 g请执行以下六个步骤。</p>
+<ul>
+<li>步骤1：逐个评估{S1、·、·、Sn}。 Si为连接子树</li>
+<li>步骤2：计算{S1、·、··、Sn}结果的必要统计数据。</li>
+<li>步骤3：<strong>估计连接变量的每个全局顺序的成本</strong>。 </li>
+<li>步骤4：选择最佳的全局变量顺序。</li>
+<li>步骤5：按全局顺序对{S1、·、·、Sn}的结果进行排序。</li>
+<li>第6步：在n个已排序的关系上合并连接。</li>
+</ul>
+<p>对于一个n-ary连接操作符，子节点的可能顺序数变为n！</p>
+<p>对于n 在朴素方法中，无论处理子节点的顺序如何，处理n-ary连接运算符的所用时间都变得相同。</p>
+<p>步骤6在时间t2时使用第2节2.2中所述的TJ算法完成。</p>
+<p>朴素方法中，Teval(Si)和Tsort(Si)由于存在一种同步障碍而不能重叠</p>
+<p>因此，即使我们利用GPU进行排序步骤，也很难大大减少总运行的时间。因此，我们使用一种改进的方法来处理一个n-ary连接算子，它由of请执行以下四个步骤。</p>
 <ul>
 <li>步骤1：估计连接变量的每个全局顺序的成本。</li>
 <li>步骤2：选择最佳的全局变量顺序。</li>
 <li>步骤3：对结果进行重叠排序。</li>
 <li>步骤 4: 在n个已排序的关系上合并连接。</li>
 </ul>
-<<<<<<< HEAD
 <p> <strong>图7(b)显示了修改后的方法的时间线。</strong></p>
 <p>步骤1-2中，它首先确定全局变量的顺序，而不计算{S1、···、Sn}的结果的统计数据 t1)<strong>。因为先计算 ，就达不到评估和排序的重叠效果</strong></p>
 <p>在步骤3中，它重叠了使用<strong>CPU评估S</strong>i，并使用GPU(i，j)对<strong>Sj</strong>的结果进行排序。</p>
@@ -478,7 +497,7 @@
 <p>然而，图11中的TPC-DS查询通常具有较低的fi值（即，接近于0），因此，Sissem-X配备了支持索引驱动的查询执行和查询优化技术 执行OmniSci。 fi是什么</p>
 <p>对于OmniSci，即使在使用主内存执行查询时，如果查询变得更加复杂，它也往往会错误地估计所需的内存量， 因此，左较深的连接树变得越来越深。因此，OmniSci往往由于错误内存分配的m.E.或FK-FK连接的大量探测成本而失败。</p>
 <p>相比之下，SPRINTER虽然是基于OmniSci的，但没有失败，查询性能显着提升。 SPRINTER生成的查询计划中的左深连接子树比OmniSci的连接树小很多，同时， 几乎没有用于构建哈希表的事实表<br>EXPERIMENTAL EVALUATION</p>
-<h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3><p>本文提出了一种针对具有FK-FK连接的复杂OLAP查询的快速n-ary连接查询处理方法。</p>
+<h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3><p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>本文提出了一种针对具有FK-FK连接的复杂OLAP查询的快速n-ary连接查询处理方法。</p>
 <p>它会生成一个包含n-ary连接运算符的查询计划，如果它优于 基于我们的成本模型的<strong>传统的左深二进制连接树</strong></p>
 <p>该计划可以通过将事实表格上的<strong>FK-FK连接</strong>放入一个n-ary连接操作符中，从而<strong>显著降低探测成本</strong>。</p>
 <p>We also have proposed an efficient <em>n</em>-ary join processing method which is based on the TJ algorithm and heuristic algorithm selecting a good global variable order. </p>
@@ -487,15 +506,15 @@
 <p>算法执行过程：</p>
 <p>算法1，确定了一个核心子图，然后对它的非核心子图一般是维表进行遍历，最后计算事实表的计算，尽量减少中间连接操作形成的结果量</p>
 <p>算法2就是算法1的推广，有多个核心子图，对它进行遍历</p>
-=======
-<h3 id="5-自动连接处理方法和优化方法，提供查询性能"><a href="#5-自动连接处理方法和优化方法，提供查询性能" class="headerlink" title="5 自动连接处理方法和优化方法，提供查询性能"></a>5 自动连接处理方法和优化方法，提供查询性能</h3><h3 id="6-odel"><a href="#6-odel" class="headerlink" title="6 odel"></a>6 odel</h3><h3 id="7-介绍了实验评价的结果"><a href="#7-介绍了实验评价的结果" class="headerlink" title="7 介绍了实验评价的结果"></a>7 介绍了实验评价的结果</h3><h3 id="总结全文"><a href="#总结全文" class="headerlink" title="总结全文"></a>总结全文</h3><blockquote>
+<p>=======</p>
 <blockquote>
 <blockquote>
 <blockquote>
 <blockquote>
 <blockquote>
 <blockquote>
-<p>659ab8ab41e0f048755673e552dec5884206a142</p>
+<blockquote>
+<p>659ab8ab41e0f048755673e552dec5884206a142<br>c050ef667e21f7ae5e2e8f8620a157be214c5b23</p>
 </blockquote>
 </blockquote>
 </blockquote>
@@ -503,7 +522,6 @@
 </blockquote>
 </blockquote>
 </blockquote>
->>>>>>> c050ef667e21f7ae5e2e8f8620a157be214c5b23
 
             </div>
 
