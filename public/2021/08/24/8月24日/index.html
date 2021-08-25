@@ -151,32 +151,60 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://tva1.sinaimg.cn/large/008i3skNgy1gtkpjpx1kjj61c80hojtl02.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >8月18日</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://tva1.sinaimg.cn/large/008i3skNgy1gtrmb59gkcj60u0190q8p02.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >8月24日</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>昨天遗留的bug有点多。热搜那一块根据criteria查询type好像无效。</p>
-<p>默认底纹还不知道怎么弄，默认底纹还需要修改。自动补全也还没做。</p>
-<p>Updates were rejected because the tip of your current branch is behind<br>解决办法，在push的最后加一个-f， 即强制push。</p>
-<p>出现问题的原因，自己手动在远程仓库修改了内容，而自己的仓库没有同步版本，</p>
-<p>git log可以查看commit的历史版本，在一个文件夹存着。</p>
-<p>git push origin c98xxxxxxxxxxxxxx:main</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtkrgnrmmcj60j807gwfm02.jpg"></p>
-<p>findOneLevelOrderByLevelAsc</p>
-<p>lambda表达式后半段是需要传参数的，名字要注意。</p>
-<p>Jpa多条件查询命名规则</p>
-<p>findBy+属性名+”查询方式”+”多条件连接符(and|or)” +属性名+”查询方式”   精准匹配可以省略</p>
-<p>SQL的count语法</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(column_name) <span class="keyword">from</span> table_name;</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> column_name) <span class="keyword">from</span> table_name;</span><br></pre></td></tr></table></figure>
+                <p>前几天太忙了，鸽了几天</p>
+<p>@PostConstruct基本：<br>@PostConstruct注解好多人以为是Spring提供的。其实是Java自己的注解。</p>
+<p>Java中该注解的说明：@PostConstruct该注解被用来修饰一个非静态的void（）方法。被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。PostConstruct在构造函数之后执行，init（）方法之前执行。</p>
+<p>通常我们会是在Spring框架中使用到@PostConstruct注解 该注解的方法在整个Bean初始化中的执行顺序：</p>
+<p>Constructor(构造方法) -&gt; @Autowired(依赖注入) -&gt; @PostConstruct(注释的方法)</p>
+<p>应用：在静态方法中调用依赖注入的Bean中的方法。</p>
+<p>看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server.port:</span><br></pre></td></tr></table></figure>
 
+<h1 id="countDownLatch"><a href="#countDownLatch" class="headerlink" title="countDownLatch"></a>countDownLatch</h1><ul>
+<li>countDownLatch是在java1.5被引入，跟它一起被引入的工具类还有CyclicBarrier、Semaphore、concurrentHashMap和BlockingQueue。</li>
+<li>存在于java.util.cucurrent包下。</li>
+</ul>
+<p>概念</p>
+<ul>
+<li>countDownLatch这个类使一个线程等待其他线程各自执行完毕后再执行。</li>
+<li>是通过一个计数器来实现的，计数器的初始值是线程的数量。每当一个线程执行完毕后，计数器的值就-1，当计数器的值为0时，表示所有线程都执行完毕，然后在闭锁上等待的线程就可以恢复工作了。</li>
+</ul>
+<h2 id="一、ExecutorService介绍"><a href="#一、ExecutorService介绍" class="headerlink" title="一、ExecutorService介绍"></a>一、ExecutorService介绍</h2><p><strong>ExecutorService</strong>是Java中对线程池定义的一个接口，它<code>java.util.concurrent</code>包中，在这个接口中定义了和后台任务执行相关的方法：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gts6lncwarj60ch07vwf102.jpg"></p>
+<p>Java API对ExecutorService接口的实现有两个，所以这两个即是Java线程池具体实现类（详细了解这两个实现类，<a target="_blank" rel="noopener" href="http://blog.csdn.net/suifeng3051/article/details/49444177">点击这里</a>）：</p>
+<ol>
+<li><p>ThreadPoolExecutor </p>
+</li>
+<li><p>ScheduledThreadPoolExecutor</p>
+</li>
+</ol>
+<p>除此之外，ExecutorService还继承了<code>Executor</code>接口（注意区分Executor接口和Executors工厂类），这个接口只有一个<code>execute()</code>方法，最后我们看一下整个继承树：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gts6mtkci5j60b009lglq02.jpg"></p>
+<h2 id="二、ExecutorService的创建"><a href="#二、ExecutorService的创建" class="headerlink" title="二、ExecutorService的创建"></a>二、ExecutorService的创建</h2><p>创建一个什么样的ExecutorService的实例（即线程池）需要g根据具体应用场景而定，不过Java给我们提供了一个<code>Executors工厂类</code>，它可以帮助我们很方便的创建各种类型ExecutorService线程池，Executors一共可以创建下面这四类线程池：</p>
+<ol>
+<li>newCachedThreadPool 创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</li>
+<li>newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</li>
+<li>newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。</li>
+<li>newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</li>
+</ol>
+<h2 id="三、ExecutorService的使用"><a href="#三、ExecutorService的使用" class="headerlink" title="三、ExecutorService的使用"></a>三、ExecutorService的使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">executorService.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Asynchronous task&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<h2 id="四、ExecutorService的执行"><a href="#四、ExecutorService的执行" class="headerlink" title="四、ExecutorService的执行"></a>四、ExecutorService的执行</h2><p>ExecutorService有如下几个执行方法：</p>
+<ul>
+<li>execute(Runnable)</li>
+<li>submit(Runnable)</li>
+<li>submit(Callable)</li>
+<li>invokeAny(…)</li>
+<li>invokeAll(…)</li>
+</ul>
+<h3 id="4-1-execute-Runnable"><a href="#4-1-execute-Runnable" class="headerlink" title="4.1 execute(Runnable)"></a>4.1 execute(Runnable)</h3><p>这个方法接收一个Runnable实例，并且异步的执行，请看下面的实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line"></span><br><span class="line">executorService.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Asynchronous task&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">executorService.shutdown();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>Jpa的sql无缘无故报错极有可能是native没开。</p>
-<p>select后面接什么只选一条记录呀 limit 1</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gtl1vyu0jnj617n0u0dj702.jpg"></p>
-<p>原来是Dto里面没有加Data注解。</p>
-<p>然后Maven-clean</p>
 
             </div>
 
@@ -239,8 +267,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/08/18/8%E6%9C%8817%E6%97%A5/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/08/18/8%E6%9C%8817%E6%97%A5/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/08/24/8%E6%9C%8824%E6%97%A5/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/08/24/8%E6%9C%8824%E6%97%A5/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
