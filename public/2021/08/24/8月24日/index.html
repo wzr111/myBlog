@@ -192,6 +192,10 @@
 <li>newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。</li>
 <li>newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</li>
 </ol>
+<p><strong>注意：线程池只是为了控制应用中处理某项业务中防止高并发问题带来的线程不安全的发生的概率。在我目前的测试用，还没有发现线程可以重用这个概念，因为线程开启后，用完就关闭了，不可以再次开启的，查看源码发现会每次新创建一个线程用来处理业务。我们可以通过线程池指定处理这项业务最大的同步线程数，</strong></p>
+<p><strong>比如：Executors.newFixedThreadPool(3);在线程池中保持三个线程可以同时执行，但是注意，并不是说线程池中永远都是这三个线程，只是说可以同时存在的线程数，当某个线程执行结束后，会有新的线程进来。newFixedThreadPool.execute(new ThreadForpools());这句话的含义并不是添加新的线程，而是添加新的处理业务请求进来。至少我当前是这么理解的，没有发现线程可以重复使用。</strong></p>
+<p>runWorker（）通过循环来取任务 通过getTask()方法。这里也就是说worker的run（）方法执行了多个任务，从而实现重复使用。多个任务本来是多个线程run（）方法执行，这里实现了一个run（）执行多个任务。</p>
+<p>getTask()方法里用了一个死循环获取任务，如果没有任务时，并且没有受到超时和shutdown命令时，线程将会一直被阻塞在这个方法里。从而实现了线程没有被销毁的目的。</p>
 <h2 id="三、ExecutorService的使用"><a href="#三、ExecutorService的使用" class="headerlink" title="三、ExecutorService的使用"></a>三、ExecutorService的使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">executorService.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Asynchronous task&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <h2 id="四、ExecutorService的执行"><a href="#四、ExecutorService的执行" class="headerlink" title="四、ExecutorService的执行"></a>四、ExecutorService的执行</h2><p>ExecutorService有如下几个执行方法：</p>
@@ -205,6 +209,12 @@
 <h3 id="4-1-execute-Runnable"><a href="#4-1-execute-Runnable" class="headerlink" title="4.1 execute(Runnable)"></a>4.1 execute(Runnable)</h3><p>这个方法接收一个Runnable实例，并且异步的执行，请看下面的实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = Executors.newSingleThreadExecutor();</span><br><span class="line"></span><br><span class="line">executorService.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Asynchronous task&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">executorService.shutdown();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+
+
+<p>Executors.newSingleThreadExecutor()这种的实现方式，看名字我们就应该知道是使用单线程重来支持的。</p>
+<p>jdk的注释说明有介绍 ，它和其他的实现 newFixedThreadPool(1)代码的区别在于，它不支持设置corePoolSize。保证不可使用额外的线程。</p>
+<p>FinalizableDelegatedExecutorService重写了finalize方法，并且在该方法中调用了super.shutdown()。它实现了在GC的时候会关闭线程。</p>
+<p>主线程就是执行main函数的线程，A线程创建B，那么B就是A的子线程</p>
 
             </div>
 
