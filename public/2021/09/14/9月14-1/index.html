@@ -152,44 +152,11 @@
 
         <div id="main" >
             <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 ></h2></a>
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >9月14-1</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>准备服务器环境<br>这一大步骤均是是 root 用户下执行！</p>
-<p>1.创建 es 组和 es 用户并设置密码<br>groupadd es<br>useradd -g es es<br>passwd es</p>
-<p>2.关闭交换内存<br>swapoff -a<br>永久生效需要修改文件 /etc/fstab 注释swap所在行<br>或者<br>sysctl -w vm.swappiness=0</p>
-<p>3.设置 vm.max_map_count<br>sysctl -w vm.max_map_count=262144<br>查看效果：<br>sysctl vm.max_map_count</p>
-<p>vm.swappiness和vm.max_map_count都在/etc/sysctl.conf文件中</p>
-<p>4.设置 file descriptor 和 limits<br>echo “* soft nofile 65536”&gt;&gt;/etc/security/limits.conf<br>echo “* hard nofile 65536”&gt;&gt;/etc/security/limits.conf<br>echo “es - nofile 65536”&gt;&gt;/etc/security/limits.conf<br>echo “es - memlock unlimited”&gt;&gt;/etc/security/limits.conf</p>
-<p>5.安装 java<br>yum install java</p>
-<p>6.创建日志和索引目录<br>mkdir -p /data/elasticsearch<br>chown -R es:es /data/elasticsearch</p>
-<p>二. 安装 ES<br>下面开始在 es 用户下执行所有操作！</p>
-<p>1.下载 elasticsearch<br>wget <a target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.tar.gz">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.tar.gz</a><br>wget <a target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/kibana/kibana-5.3.0-linux-x86_64.tar.gz">https://artifacts.elastic.co/downloads/kibana/kibana-5.3.0-linux-x86_64.tar.gz</a></p>
-<p>2.设置 jvm.options<br>vim elasticsearch-6.5.4/config/jvm.options<br>一般设为机器内存的一半。</p>
-<p>3.设置 elasticsearch.yml<br>vim elasticsearch-6.5.4/config/elasticsearch.yml<br>重要配置：</p>
-<h1 id="集群名称"><a href="#集群名称" class="headerlink" title="集群名称"></a>集群名称</h1><p>cluster.name: poc</p>
-<h1 id="节点名称"><a href="#节点名称" class="headerlink" title="节点名称"></a>节点名称</h1><p>node.name: node1</p>
-<h1 id="索引和日志路径"><a href="#索引和日志路径" class="headerlink" title="索引和日志路径"></a>索引和日志路径</h1><p>path:<br>  data: /data/elasticsearch/data<br>  logs: /data/elasticsearch/logs<br>network.host: 10.22.2.220<br>http.port: 9200<br>discovery.zen.ping.unicast.hosts: [“10.22.2.220”, “10.22.2.219”, “10.22.2.218”, “10.22.2.217”, “10.22.2.216”, “10.22.2.215”]</p>
-<p>#是否为主节点和是否是数据节点开关：主节点作为搜索节点，集群其他节点作为数据节点</p>
-<h1 id="是否为主节点"><a href="#是否为主节点" class="headerlink" title="是否为主节点"></a>是否为主节点</h1><p>node.master: true</p>
-<h1 id="是否为数据节点"><a href="#是否为数据节点" class="headerlink" title="是否为数据节点"></a>是否为数据节点</h1><p>node.data: false</p>
-<h1 id="防止同一个分片（shard）的主副本存在同一个物理机上"><a href="#防止同一个分片（shard）的主副本存在同一个物理机上" class="headerlink" title="防止同一个分片（shard）的主副本存在同一个物理机上"></a>防止同一个分片（shard）的主副本存在同一个物理机上</h1><p>cluster.routing.allocation.same_shard.host: true</p>
-<p>4.启动ES</p>
-<h1 id="使用下载好的jar-gz包安装"><a href="#使用下载好的jar-gz包安装" class="headerlink" title="使用下载好的jar.gz包安装"></a>使用下载好的jar.gz包安装</h1><p>tar -xvf elasticsearch-6.5.4.jar.gz</p>
-<p>cd /elasticsearch-6.5.4/bin<br>./elasticsearch -d 后台启动<br>把目录copy到其他集群并分切启动服务</p>
-<hr>
-<h1 id="使用下载好的rpm-包安装"><a href="#使用下载好的rpm-包安装" class="headerlink" title="使用下载好的rpm 包安装"></a>使用下载好的rpm 包安装</h1><p>rpm -ivh elasticsearch-6.5.4.rpm</p>
-<p>sudo systemctl daemon-reload</p>
-<p>sudo systemctl enable elasticsearch.service</p>
-<p>#默认只允许本地访问，需要修改配置文件允许远程访问：</p>
-<p>vim /etc/elasticsearch/elasticsearch.yml</p>
-<p>network.host: 192.168.202.218</p>
-<p>#重启Elasticsearch服务：</p>
-<p>sudo systemctl stop elasticsearch.service                                           </p>
-<p>sudo systemctl start elasticsearch.service</p>
-<p>#文件目录和日志目录权限</p>
-<p>chmod 777 -R /apply/elasticsearch/data /apply/elasticsearch/logs</p>
+                <p><img src="img_2.png" alt="img_2.png"></p>
 
             </div>
 
@@ -252,8 +219,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/09/08/%E9%9B%86%E7%BE%A4%E5%90%8D%E7%A7%B0/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/09/08/%E9%9B%86%E7%BE%A4%E5%90%8D%E7%A7%B0/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/09/14/9%E6%9C%8814-1/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/09/14/9%E6%9C%8814-1/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
