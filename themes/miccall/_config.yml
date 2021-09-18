@@ -10,7 +10,7 @@ head:
 
 Intro:
     name: zrwu
-    slogan: "热爱山川河流却没什么时间去看的计算机小硕 <br/> "
+    slogan: "Whatever is worth doing is worth doing well <br/> "
     # HeadButton:
 
 Nav:
@@ -29,7 +29,7 @@ Nav:
         
     pages:
         简历: 
-            link: "/about/index.md"
+            link: "/about/"
         团队 :
             link: "/group/"
         图库 :

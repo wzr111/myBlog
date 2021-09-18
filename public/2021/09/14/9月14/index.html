@@ -106,7 +106,7 @@
 		        <!-- Pages 自定义   -->
 		        
 		        <li>
-		            <a href="/about/index.md" title="简历">
+		            <a href="/about/" title="简历">
 		                简历
 		            </a>
 		        </li>
@@ -151,12 +151,19 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >9月3日</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://tva1.sinaimg.cn/large/008i3skNgy1guia7hilhmj61900u0n6802.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >9月14</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>categories:<br>tags:<br>thumbnail:</p>
+                <p>token与账户密码，还有密钥有关系</p>
+<p>写完代码调试的时候，如果没有人配置过服务，需要前端发布自己配置</p>
+<p>两次加密都是在后端生成的。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gui9fhm92ej61b60m4whj02.jpg"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">JARNAME=dasheng-admin</span><br><span class="line">VERSION=2.5</span><br><span class="line"></span><br><span class="line">cd $JARNAME</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">拉取最新代码</span></span><br><span class="line">echo &quot;--&gt;拉取最新代码&quot;</span><br><span class="line">git pull origin guosen-test</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">打包</span></span><br><span class="line">echo &quot;--&gt;打包&quot;</span><br><span class="line">mvn clean package -Dmaven.test.skip=true -am --settings ~/.m2/settings.xml</span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">杀进程</span></span><br><span class="line">echo &quot;--&gt;杀进程&quot;</span><br><span class="line">pid=`ps aux | grep &#x27;server.port=8091&#x27; | grep -v grep | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">echo $pid</span><br><span class="line">kill -9 $pid</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">清日志</span></span><br><span class="line">echo &quot;--&gt;清日志&quot;</span><br><span class="line">echo &#x27;&#x27; &gt; nohup.out</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">启进程</span></span><br><span class="line">echo &quot;启动进程&quot;</span><br><span class="line">nohup java -Xmx2g -jar ./$&#123;JARNAME&#125;/da-system/target/da-system-$&#123;VERSION&#125;.jar --spring.profiles.active=test --server.port=8091  &gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">查看日志</span></span><br><span class="line">echo &quot;查看日志&quot;</span><br><span class="line">tailf logs/$&#123;JARNAME&#125;_info.log</span><br></pre></td></tr></table></figure>
+
+
+
 
             </div>
 
@@ -219,8 +226,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/09/04/9%E6%9C%883%E6%97%A5-1/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/09/04/9%E6%9C%883%E6%97%A5-1/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/09/14/9%E6%9C%8814/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/09/14/9%E6%9C%8814/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
