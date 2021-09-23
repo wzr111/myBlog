@@ -32,8 +32,8 @@ Nav:
             link: "/about/"
         团队 :
             link: "/group/"
-        图库 :
-            link: "/gallery/"
+        motto :
+            link: "/motto/"
         标签:
             link: "/tag/"
         #自定义标签名
@@ -65,7 +65,7 @@ fonts: FZLTCXHJW, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB"
 #     duoshuo | disqus | disqus_click | changyan
 comment:
     use: disqus_click
-    shortname: http-miccall-tech 
+    shortname:
     duoshuo_thread_key_type: path
     duoshuo_embed_js_url: "https://static.duoshuo.com/embed.js"
     changyan_appid:

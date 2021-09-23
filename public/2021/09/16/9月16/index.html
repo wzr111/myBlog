@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/Spring-Boot/">Spring Boot</a></li><li><a class="category-link" href="/categories/Spring-Boot/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a></li><li><a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/ustc/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a>
+	                        <a class="category-link" href="/categories/Spring-Boot/">Spring Boot</a></li><li><a class="category-link" href="/categories/Spring-Boot/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a></li><li><a class="category-link" href="/categories/leetcode/">leetcode</a></li><li><a class="category-link" href="/categories/ustc/">ustc</a></li><li><a class="category-link" href="/categories/ustc/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E7%94%9F%E6%B4%BB/">个人生活</a></li><li><a class="category-link" href="/categories/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%97/">工作日志</a>
 	                    </ul>
 	        </li>
 	        
@@ -118,8 +118,8 @@
 		        </li>
 		        
 		        <li>
-		            <a href="/gallery/" title="图库">
-		                图库
+		            <a href="/motto/" title="motto">
+		                motto
 		            </a>
 		        </li>
 		        
@@ -171,6 +171,66 @@
 <p>为了防止别人拿到链接，重复调用接口的问题（重放问题），我们需要<strong>保证请求的唯一性</strong>，也就是保证这条请求只能调用一次，不能被重复调用。怎么做呢？ ==》 在请求参数中加入时间戳 timestamp（yyyyMMddHHmmss），并一起进行MD5加密签名，</p>
 <p>考虑到客户端与服务端之间的网络延迟问题，我们不能保证客户端与服务端的时间完全一致，所以我们可以折中一下：只要满足客户端请求的时间 timestamp 与服务端接收到请求的当前时间 currentTime 之间相差的绝对值在60s以内，我们就算是一次唯一不重发的请求。</p>
 <p>这种靠添加时间戳 timestamp 保证请求唯一性的方式可以说已经很好地防止了重发问题的发生；<em><strong>但是假如有高手能够在1分钟之内获取到完整链接</strong></em>，那么他就能够再次利用相同的链接进行重发操作，获取服务端返回的数据！！！</p>
+<hr>
+<p>=================================</p>
+<p>9月20日</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1guo9iiihewj60sw093gma02.jpg"></p>
+<p>当i=4,j=3时，此时combination有了变化，、</p>
+<p>即值为7的时候，j遍历到4的位置，有了另一种组合</p>
+<p>所以在7的位置上，有combination+=combination[j]种组合</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1guo9i9wr5jj60nj09rmxv02.jpg"></p>
+<hr>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1guo9i09a7hj61v40jqwhy02.jpg"></p>
+<h4 id="CyclicBarrier-与-CountDownLatch-区别"><a href="#CyclicBarrier-与-CountDownLatch-区别" class="headerlink" title="CyclicBarrier 与 CountDownLatch 区别"></a>CyclicBarrier 与 CountDownLatch 区别</h4><ul>
+<li>CountDownLatch 是一次性的，CyclicBarrier 是可循环利用的</li>
+<li>CountDownLatch 参与的线程的职责是不一样的，有的在倒计时，有的在等待倒计时结束。</li>
+<li>CyclicBarrier 参与的线程职责是一样的</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CyclicBarrier</span><span class="params">(<span class="keyword">int</span> parties)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">CyclicBarrier</span><span class="params">(<span class="keyword">int</span> parties, Runnable barrierAction)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// -构造方法</span></span></span><br><span class="line"><span class="function"><span class="comment">//parties 是参与线程的个数</span></span></span><br><span class="line"><span class="function"><span class="comment">//第二个构造方法有一个 Runnable 参数，这个参数的意思是最后一个到达线程要做的任务</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">await</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, BrokenBarrierException</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">await</span><span class="params">(<span class="keyword">long</span> timeout, TimeUnit unit)</span> <span class="keyword">throws</span> InterruptedException, BrokenBarrierException, TimeoutException</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">  <span class="comment">//- 函数</span></span></span><br><span class="line"><span class="function"><span class="comment">//线程调用 await() 表示自己已经到达栅栏</span></span></span><br><span class="line"><span class="function"><span class="comment">//BrokenBarrierException 表示栅栏已经被破坏，破坏的原因可能是其中一个线程 await() 时被中断或者超时</span></span></span><br><span class="line"><span class="function"><span class="comment">//调用await方法的线程告诉CyclicBarrier自己已经到达同步点，然后当前线程被阻塞。直到parties个参与线程调用了await方法</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br></pre></td></tr></table></figure>
+
+<p>Executors.newSingleThreadExecutor()这种的实现方式，看名字我们就应该知道是使用单线程重来支持的</p>
+<h3 id="JAVA栅栏和闭锁的区别"><a href="#JAVA栅栏和闭锁的区别" class="headerlink" title="JAVA栅栏和闭锁的区别"></a>JAVA栅栏和闭锁的区别</h3><p>闭锁： 一个同步辅助类，在完成一组正在其他线程中执行的操作之前，它允许一个或多个线程一直等待。即一组线程在等待某一事件的发生或者得到某些线程的资源。事件没有发生前，所有线程将阻塞等待，而事件发生后，所有线程将开始执行；闭锁最初处于封闭状态，</p>
+<p>闭锁CountDownLatch唯一的构造方法CountDownLatch(int count)，当在闭锁上调用countDown()方法时，闭锁计数器-1，当闭锁计数器为0时，闭锁将打开，所有线程将通过闭锁开始执行</p>
+<p><strong>栅栏：</strong>一个同步辅助类，允许一组线程互相等待，知道到达某个公共屏障点。利用栅栏，可以使线程相互等待，直到所有线程到达某一点，然后将栅栏打开，CyclicBarrier支持一个可选的Runnable参数。当线程通过栅栏时，runnable对象将被调用。构造函数CyclicBarrier(int parties, Runnable barrierAction)</p>
+<p>当线程在cyclicBarrier对象上调用await()方法时，栅栏的计数器将增加1，当计数器的值为parties时，栅栏将打开。</p>
+<p>　　<strong>区别：</strong>闭锁用于所有线程等待一个外部事件的发生；栅栏则是所有线程相互等待，直到所有线程都到达某一点时才打开栅栏，然后线程可以继续执行。</p>
+<p>闭锁在等别人完成才能冲，栅栏是等其他人到了在一起冲。</p>
+<hr>
+<p>canal意思是管道，主要用途是基于Mysql数据库增量日志解析，提供增量数据订阅和消费</p>
+<p>ES不支持事务，把ES和关系型数据库结合起来使用，把对数据的增删改放在RDB关系型数据库中执行，然后把这些动作同步到ES。就是利用关系型数据库的ACID事务支持。</p>
+<p>以Mysql为例，如果要把数据从同步到ES。canal+binary log就是常用的一种增量解决方案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名(字段名,id,name...) VALUES (..,..,..,);</span><br></pre></td></tr></table></figure>
+
+<p>adapter 适配 将管道的数据导出到相应的数据库</p>
+<p>项目中遇到过这样一个问题，repository继承了CrudRepository接口，直接使用save(S entity) 方法进行数据保存，但是因为某个字段的唯一约束冲突了，导致保存失败并抛出了异常，但是save方法后的代码逻辑却执行了，将数据保存到redis，这导致了数据库和redis数据不一致。代码代码大概是这样子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(SomeThingVo vo)</span></span>&#123;</span><br><span class="line">    SomeThingEntity entity = <span class="keyword">new</span> SomeThingEntity();</span><br><span class="line">    BeanUtils.copyProperties(vo,entity);</span><br><span class="line">    <span class="comment">//保存至数据库</span></span><br><span class="line">    someThingRepository.save(entity);</span><br><span class="line">    <span class="comment">//缓存</span></span><br><span class="line">    cacheSomeThing(entity);</span><br><span class="line">  <span class="comment">/* 上面的save抛出异常，但是这个会执行</span></span><br><span class="line"><span class="comment">     //做一些其他事</span></span><br><span class="line"><span class="comment">    doSomeThingElse();</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>然后对这个操作进行了debug，发现到save方法结束，是没有抛出异常的，然后继续进行保存redis等操作，直到方法结束才抛出了异常。</p>
+<p>这时注意到了@Transactional注解加在了这个方法之上，那就是事务提交时才会报出 唯一约束冲突的异常，</p>
+<p>再联想到Spring data Jpa的是用Hibernate实现的 , Hibernate是有缓存机制的，</p>
+<p>猜想不使用jpa自带的save方法，就可以在保存时直接抛异常，而不执行之后的代码，然后进行尝试，的确如此；</p>
+<p>我们使用@Transactional 注解时，JpaTransactionManager会在开启事务前打开一个session，</p>
+<p>将事务绑定在这个session上，<strong>事务结束session关闭，所以后续内容将以粗略以事务作为一级缓存的生存时段。</strong></p>
+<p>二级缓存又称为“SessionFactory的缓存”，由于SessionFactory对象的生命周期和应用程序的整个过程对应，因此二级缓存是进程范围或者集群范围的缓存，有可能出现并发问题，因此需要采用适当的并发访问策略。<strong>第二级缓存是可选的，是一个可配置的插件</strong>，在默认情况下，SessionFactory不会启用这个插件，<strong>二级缓存应用场景局限性比较大</strong>，适用于数据要求的实时性和准确性不高、变动很少的情况，此次我们仅针对一级缓存进行详细说明。</p>
+<p>我们使用CrudRepository.save() 方法保存或更新对象的流程如下</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1guqz7issl2j60hq0ghmxk02.jpg"></p>
+<p>从上图可以看出每次save方法执行时都会用主键向数据库发起一次查询，来判断是更新还是插入，</p>
+<p>此时spring data jpa 不会立马向数据库发送命令，</p>
+<p>而是将这条数据保存在一级缓存之中，然后返回缓存中实体对象，</p>
+<p><strong>接下来继续执行后续的代码。</strong></p>
+<p>如果想更新这条数据的值，可以直接修改这个实体对象，会修改缓存中的数据吗？</p>
+<p>jpa会在<strong>事前提交之前的某个点</strong>（具体后面会说明）<strong>自动将这些变更的数据保存至数据库</strong>，</p>
+<p>并且在<strong>事务期间查询这条数据都是优先从缓存中获取数据</strong>。</p>
+<p>一级缓存的作用还是很明显的，在整个事务中，在对同一条数据进行了保存更新查询操作都会以尽量少地请求数据库的方式进行优化，降低了网络io开销。</p>
+<p>有利就有弊，就像第一部分描述的，因为延迟提交 ，数据的正确性验证（数据库限制方面，比如约束）并没有立马执行，有时候完全是我们不能承受的，我们想要的效果并不是这样。</p>
+<p><strong>实体对象加入缓存后，我们写sql更新数据，再用自己的sql获取这条数据，得到的是缓存中的数据还是更新后的数据</strong></p>
+<p>还是缓存中的数据</p>
+<p><strong>总结</strong></p>
+<p>​      Spring data jpa 的这些操作都是简单常用而又容易忽视的，我们在使用时要考虑一下是否得当。</p>
+<p> 对于这样的缓存机制我们要做的是 将事务控制在合适的范围，将不需要在事务中执行的内容就移出去；</p>
+<p>在需要sql明确执行好的情况，就主要避开使用会延迟提交的方法。</p>
 
             </div>
 
@@ -218,7 +278,7 @@
 <script type="text/javascript">
 $('.btn_click_load').click(function() {
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+    var disqus_shortname = ''; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
@@ -243,7 +303,7 @@ $('.btn_click_load').click(function() {
         (function() { // DON'T EDIT BELOW THIS LINE
             var d = document;
             var s = d.createElement('script');
-            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.src = '//.disqus.com/embed.js';
             s.setAttribute('data-timestamp', + new Date());
             (d.head || d.body).appendChild(s);
         })();
@@ -264,7 +324,7 @@ $('.btn_click_load').click(function() {
                 <div id="copyright">
             <ul>
                 <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
-                <li>Design: <a target="_blank" rel="noopener" href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+                <li>Design: <a target="_blank" rel="noopener" href="http://baidu.com " style="border-bottom: none;">wzr1005</a></li>
             </ul>
             
                 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
