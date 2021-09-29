@@ -231,6 +231,14 @@
 <p>​      Spring data jpa 的这些操作都是简单常用而又容易忽视的，我们在使用时要考虑一下是否得当。</p>
 <p> 对于这样的缓存机制我们要做的是 将事务控制在合适的范围，将不需要在事务中执行的内容就移出去；</p>
 <p>在需要sql明确执行好的情况，就主要避开使用会延迟提交的方法。</p>
+<p><strong>@Resource</strong>注解要求提供一个bean名称的属性，若该属性为空，则自动采用标注处的变量或方法名作为bean的名称。</p>
+<p>@Resource和@Autowired都是做bean的注入时使用，其实@Resource并不是Spring的注解，它的包是javax.annotation.Resource，需要导入，但是Spring支持该注解的注入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>在使用springboot写aop的时候，有个JoinPoint类，用来获取代理类和被代理类的信息。</p>
+<p>这个文章记录一下JoinPoint的getSignature方法返回的是什么格式。</p>
 
             </div>
 
