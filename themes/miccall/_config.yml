@@ -41,7 +41,7 @@ Nav:
 
 MainFirst:
     name: wuzhenren
-    description: USTC<br>zrwu@mail.ustc.edu.cn
+    description: <br>zrwu@mail.ustc.edu.cn
     pic_url: /images/me.jpg
     goto_ulr: ""
 Gallery :
