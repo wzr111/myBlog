@@ -5,6 +5,13 @@ categories: leetcode
 tags: leetcode
 thumbnail: https://tva1.sinaimg.cn/large/008i3skNgy1gur3n02kllj61900u0k2l02.jpg
 ---
+冬天快来了，加油
+
+10月11日 极其曲折的一道hard题，英语单词写错了四个。。
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gvbqo3x10uj621d0u0jyu02.jpg)
+
+![](https://tva1.sinaimg.cn/large/008i3skNgy1gvbqp52727j60tm0jmmzg02.jpg)
+
 10月3 国庆差不多要过去一半了
 
 ![](https://tva1.sinaimg.cn/large/008i3skNgy1gv1iy0frmfj626a0pgdm402.jpg)
