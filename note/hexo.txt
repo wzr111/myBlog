@@ -1,0 +1,10 @@
+yum install npm nodejs
+npm install -g hexo-cli
+
+cd myblog
+npm install
+hexo g
+
+git config --global user.name wzr1005
+git config --global user.email 784230508@qq.com
+git config user.name

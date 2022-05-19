@@ -1,0 +1,17 @@
+# 从hdfs拉取环境到本地(需要在/data路径下，因为pip安装的包是在这路径)
+cd /data && sh /data/home/tianqiong/scripts/hadoop.sh fs -get hdfs://qy-pcg-1-v2/data/venus/pythonenv/v1/std/python3.6.tar.gz
+
+# 在容器实例解压第1步拉取到的环境文件
+tar -zxvf python3.6.tar.gz && rm python3.6.tar.gz
+
+# 修改pip3指定的python路径
+cd /data/ceph/jackysjiang/env/python3.6
+vi ./bin/pip3
+# 第一行修改为“#!/data/ceph/jackysjiang/env/python3.6/bin/python”
+
+# 在环境中安装需要的第三方库
+cd python3.6/bin && ./pip3 install sentencepiece pymysql openpyxl pandas jieba beautifulsoup4 numpy opencv-python scikit-learn requests django schema PyYaml redis pymongo kafka-python==1.4.4
+
+# 压缩成zip包，venus只能解压zip！！！
+cd python3.6
+zip -r python3.6.zip ./*

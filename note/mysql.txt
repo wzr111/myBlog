@@ -1,0 +1,17 @@
+SQtQfIq*o3>+
+ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';  
+ Wzr@3379779
+
+ Linux安装mysql，太难了
+ wget https://dev.mysql.com/get/mysql80-community-release-el7-4.noarch.rpm
+ yum install mysql80-community-release-el7-4.noarch.rpm
+ yum makecache
+ rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+yum install -y  mysql-community-server
+ systemctl start mysqld
+systemctl status mysqld
+grep 'temporary password' /var/log/mysqld.log
+mysql -u localhost -p
+
+
+

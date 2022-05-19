@@ -1,0 +1,31 @@
+sudu vim /etc/hosts #将github的ip绑定
+
+140.82.113.3 github.com
+199.232.69.194 github.global.ssl.fastly.net
+# 如果IP改变了，需要去查下IP
+然后需要
+service network restart 重启网络服务才能生效
+
+chmod -R 
+# 更改目录所有者 目录授权给用户
+chown -R 用户名称 目录名称
+# 更改目录权限
+chmod -R 755 目录名称
+
+es将elastic search文件目录chown -R zhenrenwu elasticsearch即可
+curl 127.0.0.1:9200 测试是否安装
+
+max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+切换到root用户
+
+执行命令：
+sysctl -w vm.max_map_count=262144
+查看结果：
+sysctl -a|grep vm.max_map_count
+显示：
+vm.max_map_count = 262144
+
+sudo apt-get install git
+Linux也可以下载安装
+
+
