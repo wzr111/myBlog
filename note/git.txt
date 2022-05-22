@@ -1,0 +1,2 @@
+删除不小心git add的文件
+git rm --cached xxx

@@ -13,5 +13,13 @@ systemctl status mysqld
 grep 'temporary password' /var/log/mysqld.log
 mysql -u localhost -p
 
+select column_name,column_comment,data_type from information_schema.columns where table_name='user'
 
+create user 'root'@'101.43.102.16' identified by  'Wzr@3379779';
+
+grant all privileges on *.* to root@'%';
+
+nmap -Pn 101.43.102.16 -p 3306
+systemctl stop firewalld.service
+关闭Linux的防火墙，和腾讯云的不一样
 
