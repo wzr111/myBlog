@@ -1,2 +1,9 @@
-É¾³ı²»Ğ¡ĞÄgit addµÄÎÄ¼ş
+åˆ é™¤ä¸å°å¿ƒgit addçš„æ–‡ä»¶
 git rm --cached xxx
+
+# æŸ¥çœ‹é…ç½®ä¿¡æ¯
+git config --list
+git config --global user.name
+git config --global user.password
+git config --global user.email
+ssh-keygen -t rsa

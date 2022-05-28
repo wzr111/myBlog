@@ -1,17 +1,17 @@
-# ´ÓhdfsÀ­È¡»·¾³µ½±¾µØ(ĞèÒªÔÚ/dataÂ·¾¶ÏÂ£¬ÒòÎªpip°²×°µÄ°üÊÇÔÚÕâÂ·¾¶)
+# ä»hdfsæ‹‰å–ç¯å¢ƒåˆ°æœ¬åœ°(éœ€è¦åœ¨/dataè·¯å¾„ä¸‹ï¼Œå› ä¸ºpipå®‰è£…çš„åŒ…æ˜¯åœ¨è¿™è·¯å¾„)
 cd /data && sh /data/home/tianqiong/scripts/hadoop.sh fs -get hdfs://qy-pcg-1-v2/data/venus/pythonenv/v1/std/python3.6.tar.gz
 
-# ÔÚÈİÆ÷ÊµÀı½âÑ¹µÚ1²½À­È¡µ½µÄ»·¾³ÎÄ¼ş
+# åœ¨å®¹å™¨å®ä¾‹è§£å‹ç¬¬1æ­¥æ‹‰å–åˆ°çš„ç¯å¢ƒæ–‡ä»¶
 tar -zxvf python3.6.tar.gz && rm python3.6.tar.gz
 
-# ĞŞ¸Äpip3Ö¸¶¨µÄpythonÂ·¾¶
+# ä¿®æ”¹pip3æŒ‡å®šçš„pythonè·¯å¾„
 cd /data/ceph/jackysjiang/env/python3.6
 vi ./bin/pip3
-# µÚÒ»ĞĞĞŞ¸ÄÎª¡°#!/data/ceph/jackysjiang/env/python3.6/bin/python¡±
+# ç¬¬ä¸€è¡Œä¿®æ”¹ä¸ºâ€œ#!/data/ceph/jackysjiang/env/python3.6/bin/pythonâ€
 
-# ÔÚ»·¾³ÖĞ°²×°ĞèÒªµÄµÚÈı·½¿â
+# åœ¨ç¯å¢ƒä¸­å®‰è£…éœ€è¦çš„ç¬¬ä¸‰æ–¹åº“
 cd python3.6/bin && ./pip3 install sentencepiece pymysql openpyxl pandas jieba beautifulsoup4 numpy opencv-python scikit-learn requests django schema PyYaml redis pymongo kafka-python==1.4.4
 
-# Ñ¹Ëõ³Ézip°ü£¬venusÖ»ÄÜ½âÑ¹zip£¡£¡£¡
+# å‹ç¼©æˆzipåŒ…ï¼Œvenusåªèƒ½è§£å‹zipï¼ï¼ï¼
 cd python3.6
 zip -r python3.6.zip ./*

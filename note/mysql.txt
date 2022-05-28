@@ -1,13 +1,13 @@
-SQtQfIq*o3>+
- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';  
+jIarxV!eg8+E
+ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
  Wzr@3379779
 
- Linux°²×°mysql£¬Ì«ÄÑÁË
+ Linuxå®‰è£…mysqlï¼Œå¤ªéš¾äº†
  wget https://dev.mysql.com/get/mysql80-community-release-el7-4.noarch.rpm
  yum install mysql80-community-release-el7-4.noarch.rpm
  yum makecache
  rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
-yum install -y  mysql-community-server
+yum install -y  mysql-community-server #å¦‚æœæŠ¥é”™ï¼Œyum module disable mysql
  systemctl start mysqld
 systemctl status mysqld
 grep 'temporary password' /var/log/mysqld.log
@@ -15,11 +15,14 @@ mysql -u localhost -p
 
 select column_name,column_comment,data_type from information_schema.columns where table_name='user'
 
+ä¿®æ”¹rootå¯†ç 
+alter user root@localhost IDENTIFIED BY 'xxxx';
+
 create user 'root'@'101.43.102.16' identified by  'Wzr@3379779';
 
 grant all privileges on *.* to root@'%';
 
 nmap -Pn 101.43.102.16 -p 3306
 systemctl stop firewalld.service
-¹Ø±ÕLinuxµÄ·À»ğÇ½£¬ºÍÌÚÑ¶ÔÆµÄ²»Ò»Ñù
+å…³é—­Linuxçš„é˜²ç«å¢™ï¼Œå’Œè…¾è®¯äº‘çš„ä¸ä¸€æ ·
 
