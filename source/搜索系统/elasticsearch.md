@@ -383,3 +383,42 @@ jdk，目录，
 
 <img src="../../../../Library/Application%20Support/typora-user-images/image-20220605200425702.png" alt="image-20220605200425702" style="zoom:25%;" />
 
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h2xuht3265j21c00dyta4.jpg)
+
+ES集群内部荣宰机制
+
+master节点，候选节点，不存数据。
+
+学会如何会用，面临调优的时候，才是考验的时候
+
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h2xvdkg0f1j21fl0u00vg.jpg)
+
+每天前一百人可以免费观看vip视频，增加高并发锁的内容
+
+mysql的索引查看
+
+tablename.frm 表文件
+
+tablename.ibd innodb搜索引擎
+
+mysql的datapage是16kb，每次io都是16kb，b+树减少io次数。
+
+![](https://tva1.sinaimg.cn/large/e6c9d24ely1h2xwe2i0jqj214w0p6jt5.jpg)
+
+每一台es的节点都是负载均衡的节点
+
+复合查询、聚合分析、排名、地理位置分析
+
+处理PB级数据
+
+应用：百度谷歌全文索引、电商垂搜、数据分析、数据挖掘
+
+data log在生产环境下不能放在环境目录，因为在更新的时候会覆盖重写。
+
+每一个节点就是一个Java进程
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h2yt1s5x10j217k0retbi.jpg)
+
+
+
+增加节点或者挂点节点，会触发node balance
