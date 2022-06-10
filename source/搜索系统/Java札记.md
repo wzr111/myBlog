@@ -157,6 +157,15 @@ shutdownNow方法
 
 就是将线程池的状态修改为STOP，然后尝试打断所有的线程，从阻塞队列中移除剩余的任务，这也是为什么[shutdown](https://www.zhihu.com/search?q=shutdown&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"answer"%2C"sourceId"%3A2471908876})Now不能执行剩余任务的原因。
 
+
+
+| 序号 | 键     | ArrayBlockingQueue                               | LinkedBlockingQueue                                          |
+| :--- | :----- | :----------------------------------------------- | :----------------------------------------------------------- |
+| 1    | 基本的 | 它由数组支持                                     | 它由链接列表支持                                             |
+| 2    | 有界   | 它是有界数组队列。因此，一旦创建，容量将无法更改 | 它是无限队列                                                 |
+| 3    | 通量   | 它的吞吐量比链接队列队列低                       | 链接队列比基于阵列的队列具有更高的吞吐量                     |
+| 4。  | 锁     | 它使用单锁双条件算法                             | 它具有putLock用于在队列中插入元素，以及takeLock用于从队列中删除元素 |
+
 **执行shutdownNow会丢失任务**
 
 **线程池的监控**

@@ -1,3 +1,13 @@
+---
+title: mmall项目探究
+date: 2022-03-01 11:06:58
+type: "个人生活"
+categories:
+- 开源项目
+  tags:
+  thumbnail: https://tva1.sinaimg.cn/large/008i3skNgy1gt14d2z4q0j31900u0tb5.jpg
+---
+
 salt是可以自定义的
 
 MD5('123' + '1ck12b13k1jmjxrg1h0129h2lj') = '6c22ef52be70e11b6f3bcf0f672c96ce'

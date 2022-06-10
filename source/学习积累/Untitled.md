@@ -1,1 +1,0 @@
-Sweeney Todd: The Demon Barber of Fleet Street - In Concert with the New York Philharmonic

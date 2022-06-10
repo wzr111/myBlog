@@ -1,3 +1,12 @@
+---
+title: 多路IO复用
+date: 2022-03-01 11:06:58
+type: 基础知识
+categories:
+- 开源项目
+  tags:
+  thumbnail: https://tva1.sinaimg.cn/large/008i3skNgy1gt14d2z4q0j31900u0tb5.jpg
+---
 # 阻塞I/O
 
 阻塞，就是调用我（函数），我（函数）没有接收完数据或者没有得到结果之前，我不会返回。
